@@ -11,3 +11,5 @@ docker build -t mi-aplicacion-mean .
 ```bash
 docker run -p 3000:3000 mi-aplicacion-mean
 ```
+
+
