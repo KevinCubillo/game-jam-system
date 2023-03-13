@@ -2,27 +2,29 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('./../models/User');
 const app = express();
+const router = express.Router();
 
-app.post('/register', function (req, res) {
+router.post('/register', function (req, res) {
   let body = req.body;
   let { nombre, email, password, role } = body;
-  let User = new User({
+  let newUser = new User({
     nombre,
     email,
     password: bcrypt.hashSync(password, 10),
     role
   });
-User.save((err, UserDB) => {
-    if (err) {
-      return res.status(400).json({
-         ok: false,
-         err,
+  newUser.save()
+    .then((UserDB) => {
+      res.json({
+        ok: true,
+        User: UserDB
       });
-    }
-    res.json({
-          ok: true,
-          User: UserDB
-       });
     })
+    .catch((err) => {
+      return res.status(400).json({
+        ok: false,
+        err: err.message,
+      });
+    });
 });
-module.exports = app;
+module.exports = router;

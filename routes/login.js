@@ -3,46 +3,47 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/User');
 const app = express();
+const router = express.Router();
 
 
-app.post('/login', (req, res) => {
-    let body = req.body;
 
-    User.findOne({ email: body.email }, (erro, UserDB)=>{
-        if (erro) {
-          return res.status(500).json({
-             ok: false,
-             err: erro
-          })
-       }
-   // Verifica que exista un User con el mail escrita por el User.
-      if (!UserDB) {
+router.post('/login', function (req, res) {
+   let body = req.body;
+   let { email, password } = body;
+ 
+   User.findOne({ email: email })
+     .then((user) => {
+       if (!user) {
          return res.status(400).json({
            ok: false,
            err: {
-               message: "User or password incorrect"
+             message: 'User not found'
            }
-        })
-      }
-   // Valida que la contraseña escrita por el User, sea la almacenada en la db
-      if (! bcrypt.compareSync(body.password, UserDB.password)){
-         return res.status(400).json({
-            ok: false,
-            err: {
-              message: "User or password incorrect"
-            }
          });
-      }
-   // Genera el token de autenticación
-       let token = jwt.sign({
-              User: UserDB,
-           }, process.env.SEED_AUTENTICATION, {
-           expiresIn: process.env.token_expiration
-       })
+       }
+ 
+       if (!bcrypt.compareSync(password, user.password)) {
+         return res.status(400).json({
+           ok: false,
+           err: {
+             message: 'Invalid password'
+           }
+         });
+       }
+ 
        res.json({
-           ok: true,
-           User: UserDB,
-           token,
-       })
-   })
-})
+         ok: true,
+         user: user
+       });
+ 
+     })
+     .catch((err) => {
+       return res.status(500).json({
+         ok: false,
+         err: err.message
+       });
+     });
+ 
+ });
+
+module.exports = router;

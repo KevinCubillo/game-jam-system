@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 app.use(require('./routes/index'));
 
-let renderHTML = path.resolve(__dirname, './views/index.html');
+let renderHTML = path.resolve(__dirname, './views/login.html');
 
 app.get('/', (req, res) => {
   res.sendFile(renderHTML);

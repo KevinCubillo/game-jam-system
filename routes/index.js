@@ -1,5 +1,12 @@
 const express = require('express')
 const app = express()
-app.use(require('./login'));
-app.use(require('./register'));
+const loginRouter = require('./login');
+const registerRouter = require('./register');
+
+app.use(express.json()); 
+app.use(loginRouter); 
+app.use(registerRouter)
+
+
+
 module.exports = app;
