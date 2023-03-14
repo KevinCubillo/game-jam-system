@@ -14,7 +14,7 @@ const RegisterController = require('./controllers/RegisterController')
 const app = express()
 var publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
-app.use(bodyParser.urlencoded({ extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //--------------------------------------------
 
@@ -57,12 +57,12 @@ mongoose.connect(process.env.urlDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => {
-  console.log("Database working");
-})
-.catch((err) => {
-  console.error(err);
-});
+  .then(() => {
+    console.log("Database working");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 //--------------------------------------------
 
 app.listen(process.env.PORT, () => {

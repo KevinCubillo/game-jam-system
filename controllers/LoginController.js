@@ -5,10 +5,10 @@ const path = require('path');
 
 class LoginController {
 
-    renderLogin(req, res) {
-        let renderLogin = path.resolve(__dirname, './../views/login.html');
-        res.sendFile(renderLogin);
-    }
+  renderLogin(req, res) {
+    let renderLogin = path.resolve(__dirname, './../views/login.html');
+    res.sendFile(renderLogin);
+  }
 
   async login(req, res) {
     try {

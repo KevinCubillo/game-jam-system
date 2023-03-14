@@ -11,7 +11,7 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
     nombre: {
         type: String,
-        unique: true, 
+        unique: true,
         required: [true, "The name is necesary"],
         validate: [
             {
@@ -55,12 +55,12 @@ let userSchema = new Schema({
     },
 });
 
-userSchema.methods.toJSON = function() {
+userSchema.methods.toJSON = function () {
     let user = this;
     let userObject = user.toObject();
     delete userObject.password;
-  
+
     return userObject;
-  };
+};
 
 module.exports = mongoose.model('Usuario', userSchema)
