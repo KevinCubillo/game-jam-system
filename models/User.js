@@ -11,7 +11,20 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
     nombre: {
         type: String,
+        unique: true, 
         required: [true, "The name is necesary"],
+        validate: [
+            {
+                validator: function (value) {
+                    return mongoose
+                        .model('Usuario')
+                        .findOne({ nombre: value })
+                        .exec()
+                        .then(user => !user);
+                },
+                message: '{PATH} must be unique'
+            }
+        ]
     },
     email: {
         type: String,
