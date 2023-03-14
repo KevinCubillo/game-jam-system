@@ -15,10 +15,7 @@ router.post('/register', function (req, res) {
   });
   newUser.save()
     .then((UserDB) => {
-      res.json({
-        ok: true,
-        User: UserDB
-      });
+      res.redirect('/welcome');
     })
     .catch((err) => {
       return res.status(400).json({

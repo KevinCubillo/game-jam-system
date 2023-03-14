@@ -11,23 +11,10 @@
     <link rel="stylesheet" href="styles/styles.css">
     <title>Document</title>
 </head>
-<body>
-    <div class="infoBox">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <div class="box">
-                <input type="email" placeholder="Email" name="email">
-            </div>
-
-            <div class="box">
-                <input type="password" placeholder="Contraseña" name="password">
-            </div>
-
-            <div class="box">
-                <button>Login</button>
-            </div>
-        </form>
-        <p>¿Aún no tienes cuenta? <a href="/register">Registrate</a> </p>
+<body >
+    <div class="infoBox" style="background-color: transparent; flex-direction: row;">
+        <a href="/login" style="background-color:#fff;padding: 2rem 5rem; border-radius:5px;font-family: 'Roboto', sans-serif;text-decoration: none;font-size:2.5rem; color:#2e2e2e">Login</a>
+        <a href="/register"style="background-color:#fff;padding: 2rem 5rem; border-radius:5px;font-family: 'Roboto', sans-serif;text-decoration: none;font-size:2.5rem; color:#2e2e2e">Register</a>
     </div>
 </body>
 </html>

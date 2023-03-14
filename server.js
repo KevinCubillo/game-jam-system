@@ -5,6 +5,8 @@ const app = express()
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const path = require('path');
+var publicPath = path.resolve(__dirname, 'public');
+app.use(express.static(publicPath));
 
 app.use(bodyParser.urlencoded({ extended: false}))
 
@@ -12,11 +14,29 @@ app.use(bodyParser.json())
 
 app.use(require('./routes/index'));
 
-let renderHTML = path.resolve(__dirname, './views/login.html');
+let renderIndex = path.resolve(__dirname, './views/index.html');
 
 app.get('/', (req, res) => {
-  res.sendFile(renderHTML);
+  res.sendFile(renderIndex);
 })
+
+let renderRegister = path.resolve(__dirname, './views/register.html');
+
+app.get('/register', (req, res) => {
+  res.sendFile(renderRegister);
+})
+
+let renderLogin = path.resolve(__dirname, './views/login.html');
+
+app.get('/login', (req, res) => {
+  res.sendFile(renderLogin);
+})
+
+const renderWelcome = path.resolve(__dirname, './views/welcome.html');
+
+app.get('/welcome', (req, res) => {
+  res.sendFile(renderWelcome);
+});
 
 mongoose.connect(process.env.urlDB, {
   useNewUrlParser: true,

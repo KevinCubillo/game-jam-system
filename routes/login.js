@@ -31,10 +31,7 @@ router.post('/login', function (req, res) {
          });
        }
  
-       res.json({
-         ok: true,
-         user: user
-       });
+       res.redirect('/welcome');
  
      })
      .catch((err) => {
