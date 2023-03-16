@@ -5,7 +5,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 let urlDB = "";
 
 if(process.env.NODE_ENV === 'dev') {
-    urlDB = "mongodb://db:27017";
+    urlDB = "mongodb://localhost:27017";
 }
 
 
