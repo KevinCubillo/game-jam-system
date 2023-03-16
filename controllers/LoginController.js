@@ -48,6 +48,23 @@ class LoginController {
       });
     }
   }
+
+  loginWithToken(req, res) {
+    let token = req.query.token;
+    jwt.verify(token, 'secret-key', (err, decoded) => {
+      if (err) {
+        return res.status(401).json({
+          ok: false,
+          err: {
+            message: 'Invalid token'
+          }
+        });
+      }
+
+      return res.redirect('/welcome');
+    });
+  }
+  
 }
 
 module.exports = new LoginController();
