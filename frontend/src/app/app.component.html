@@ -1,21 +1,14 @@
 <header class="header-area header-sticky">
-  <div class="container" class="headerT">
-      <div class="row" class="headerD">
+  <div class="container-fluid px-5 mx-auto">
+      <div class="row" class="container-fluid">
           <div class="col-12">
               <nav class="main-nav">
                   <!-- ***** Logo Start ***** -->
                   <a href="index.html" class="logo">
-                      <img src="assets/images/logo.png" alt="">
+                      Game Jam <span style="color:#E75160;">+</span>
                   </a>
                   <!-- ***** Logo End ***** -->
-                  <!-- ***** Search End ***** -->
-                  <div class="search-input">
-                    <form id="search" action="#">
-                      <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                      <i class="fa fa-search"></i>
-                    </form>
-                  </div>
-                  <!-- ***** Search End ***** -->
+
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
                       <li><a href="index.html" class="active">Home</a></li>
@@ -34,7 +27,7 @@
   </div>
 </header>
 
-<div class="mainC">
+<div class="container-fluid px-5">
   <router-outlet></router-outlet>
 </div>
 

@@ -1,5 +1,5 @@
 .navStyle{
-    background-color: #1A1E4D;
+    background-color: #1F2122;
 }
 
 .headerT{
@@ -9,5 +9,11 @@
 
 .headerD{
     width: 90%;
+}
 
+.logo{
+    font-size: 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    color:#ffffff;
 }
