@@ -1,0 +1,36 @@
+
+<div class="form" style="height: auto;">
+<label class="title">Create <span style="color:#E75160">Jam</span></label>
+{{ formJam.value | json }}
+<form [formGroup]="formJam">
+
+    <div class="form-group">
+      <label >Name</label>
+      <input type="text" autocomplete="off" class="form-control" id="email" formControlName="name">
+    </div>
+
+    <div class="form-group">
+      <label>Start date:</label>
+      <input type="datetime-local" class="form-control" formControlName="startDateTime">
+    </div>
+
+    <div class="form-group">
+        <label>End date:</label>
+        <input type="datetime-local" class="form-control" formControlName="endDateTime">
+      </div>
+
+      <div class="form-group">
+        <label>Theme:</label>
+        <input type="text" autocomplete="off" class="form-control" formControlName="theme">
+      </div>
+
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  
+</div>
+
+

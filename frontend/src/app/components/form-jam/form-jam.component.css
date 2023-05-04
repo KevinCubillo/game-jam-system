@@ -1,0 +1,25 @@
+.form {
+    padding: 2rem;
+    color: aliceblue;
+    width: 50%;
+    margin: 10rem auto;
+}
+
+.btn {
+    background-color: #E75160;
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: aliceblue;
+    margin-bottom: 1.5rem;
+}

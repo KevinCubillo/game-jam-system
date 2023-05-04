@@ -9,6 +9,7 @@ import {SigninComponent} from './components/signin/signin.component';
 import {JamsViewComponent} from './components/jams-view/jams-view.component';
 
 import { AuthGuard } from './auth.guard';
+import { FormJamComponent } from './components/form-jam/form-jam.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'main',
     component: JamsViewComponent
+  },
+  {
+    path: 'create/jam',
+    component: FormJamComponent
   }
 ];
 
