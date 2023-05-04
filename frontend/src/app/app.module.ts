@@ -11,13 +11,11 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PrivateComponent } from './components/private/private.component';
-import { NgChartsModule } from 'ng2-charts';
 
 
 
 import { AuthGuard } from './auth.guard';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InventoryComponent } from './components/inventory/inventory.component';
+import { JamsViewComponent } from './components/jams-view/jams-view.component';
 
 
 @NgModule({
@@ -26,16 +24,14 @@ import { InventoryComponent } from './components/inventory/inventory.component';
     SignupComponent,
     SigninComponent,
     PrivateComponent,
-    DashboardComponent,
-    InventoryComponent
+    JamsViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    NgChartsModule
+    BrowserAnimationsModule
     
 
   ],

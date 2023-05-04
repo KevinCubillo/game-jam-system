@@ -1,11 +1,12 @@
 <div class="row">
-    <div class="col-md-4 mx-auto">
+
+    <div class="col-md-7 mx-auto bg-light rounded-sm">
       <div class="car">
-        <div class="car-header">
+        <div class="car-header text-center mt-3">
           Sign In
         </div>
-        <div class="card-body">
-          <form (submit)="signIn()">
+        <div class="card-body" style="display: flex;flex-direction: column;">
+          <form (submit)="signIn()" class="">
             <div class="form-group">
               <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required>
               <small class="text-danger" *ngIf="errorMessage && errorMessage.includes('email')">{{ errorMessage }}</small>
@@ -24,6 +25,5 @@
       </div>
     </div>
   </div>
-  
   
   

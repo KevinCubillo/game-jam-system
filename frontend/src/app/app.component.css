@@ -1,0 +1,13 @@
+.navStyle{
+    background-color: #1A1E4D;
+}
+
+.headerT{
+    display: flex;
+    justify-content: center;
+}
+
+.headerD{
+    width: 90%;
+
+}

@@ -1,40 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<div class="container">
-  <a class="navbar-brand" href="#">Point Of Sale</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/inventory" routerLinkActive="active">Inventario</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      </li>
-      
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signin" routerLinkActive="active">Login</a> <!-- Cambiar /login a /signin -->
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signup" routerLinkActive="active">Register</a> <!-- Cambiar /register a /signup -->
-        </li>
-      </ng-container>
-      <ng-template #loggedIn> 
-        <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer;" (click)="authService.logout()">Logout</a>
-        </li>
-      </ng-template>
-    </ul>
+<header class="header-area header-sticky">
+  <div class="container" class="headerT">
+      <div class="row" class="headerD">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <!-- ***** Logo Start ***** -->
+                  <a href="index.html" class="logo">
+                      <img src="assets/images/logo.png" alt="">
+                  </a>
+                  <!-- ***** Logo End ***** -->
+                  <!-- ***** Search End ***** -->
+                  <div class="search-input">
+                    <form id="search" action="#">
+                      <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                      <i class="fa fa-search"></i>
+                    </form>
+                  </div>
+                  <!-- ***** Search End ***** -->
+                  <!-- ***** Menu Start ***** -->
+                  <ul class="nav">
+                      <li><a href="index.html" class="active">Home</a></li>
+                      <li><a href="browse.html">Browse</a></li>
+                      <li><a href="details.html">Details</a></li>
+                      <li><a href="streams.html">Streams</a></li>
+                      <li><a href="profile.html">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
+                  </ul>   
+                  <a class='menu-trigger'>
+                      <span>Menu</span>
+                  </a>
+                  <!-- ***** Menu End ***** -->
+              </nav>
+          </div>
+      </div>
   </div>
-</div>
-</nav>
+</header>
 
-<div class="container-fluid p-5 ">
+<div class="mainC">
   <router-outlet></router-outlet>
 </div>
 
