@@ -1,0 +1,192 @@
+<div class="inventaryView">
+
+    <!--=========================== TITULO DE LA PESTAÑA ====================================-->
+    <div class="titleBox">
+        <h1>Administración de inventario</h1>
+    </div>
+    
+    <!--=========================== ACCIONES RAPIDAS ====================================-->
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box bg-white rounded">
+                <div class="boxActions C">
+                    <div class="actionIcon" style="background-color: #97a2eb;"><i class="fa-solid fa-warehouse"></i></div>
+                    <div class="actionInfo">
+                        <p class="actionName">Catalogo</p>
+                        <span style="background-color: #4f58a3;">213</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box bg-white rounded">
+                <div class="boxActions D">
+                    <div class="actionIcon" style="background-color: #59e08a;"><i class="fa-solid fa-boxes-stacked"></i></div>
+                    <div class="actionInfo">
+                        <p class="name">Disponible</p>
+                        <span style="background-color: #34aa60;">213</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box bg-white rounded">
+                <div class="boxActions E">
+                    <div class="actionIcon" style="background-color: #f5e067;"><i class="fa-solid fa-truck-moving"></i></div>
+                    <div class="actionInfo">
+                        <p class="name">Entrantes</p>
+                        <span style="background-color: #c6b44e;">213</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box bg-white rounded">
+                <div class="boxActions S">
+                    <div class="actionIcon" style="background-color: #71c2db;"><i class="fa-regular fa-share-from-square"></i></div>
+                    <div class="actionInfo">
+                        <p class="name">Salidas</p>
+                        <span style="background-color: #539db4;">213</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!--=========================== CONTROLES COMUNES ====================================-->
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <input type="Buscar" placeholder="Buscar" class="search w-100 h-100 rounded">
+            </div>
+            
+            <div class="col-md-8">
+                <div class="row d-flex justify-content-end">
+                    <div class="col-md-2">
+                        <div class="set view d-flex align-items-center">
+                            <p class="my-auto">VISTA</p>
+                            <a href=""><i class="fa-solid fa-list" style="color: #959494;"></i></a>
+                            <a href=""><i class="fa-brands fa-microsoft" style="color: #959494;"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="set view" >
+                            <p class="my-auto">Filtros</p>
+                            <a href=""><i class="fa-solid fa-filter" style="color: #959494;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=========================== CONTENIDO DE LISTA ====================================-->
+
+
+    <div class="content mt-5" >
+        <!-- *ngFor="let product of InventoryService.products" -->
+        <div class="itemLV horizontalBox" >
+            <div class="image">
+                <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/279/279359/two-eggplants-on-a-wooden-table.jpg" alt="">
+            </div>
+    
+            <div class="info horizontalBox" style="justify-content: space-between;">
+                <p class="infoValue" style="width:100%;">Nombre: <span>Berenjenas</span></p>
+                <p class="infoValue" style="width:auto;">Tipo: <span>Comida</span>
+                </p>   
+                <p class="infoValue"  style="width:auto;background-color: transparent;color: #636363;border:none;">Cantidad: <span>213</span></p>                
+            </div>
+    
+            <div class="options horizontalBox">
+                <a href="" class="button" style="background-color: #59e08a;"><i class="fa-solid fa-plus-minus" style="color: #ffffff;"></i></a>
+                <a href="" class="button" style="background-color: #f5e067;"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>    
+                <a href="#" class="button" style="background-color: #cd5d5d;"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>  
+            </div>
+        </div>
+
+        <div class="itemLV horizontalBox" >
+            <div class="image">
+                <img src="https://walmartcr.vtexassets.com/arquivos/ids/283800/Arroz-Luisiana-99-5-Grano-Entero-Enriquecido-1800gr-2-34365.jpg?v=637798774352500000" alt="">
+            </div>
+    
+            <div class="info horizontalBox" style="justify-content: space-between;">
+                <p class="infoValue" style="width:100%;">Nombre: <span>Arroz</span></p>
+                <p class="infoValue" style="width:auto;">Tipo: <span>Comida</span>
+                </p>   
+                <p class="infoValue"  style="width:auto;background-color: transparent;color: #636363;border:none;">Cantidad: <span>17</span></p>                
+            </div>
+    
+            <div class="options horizontalBox">
+                <a href="" class="button" style="background-color: #59e08a;"><i class="fa-solid fa-plus-minus" style="color: #ffffff;"></i></a>
+                <a href="" class="button" style="background-color: #f5e067;"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>    
+                <a href="#" class="button" style="background-color: #cd5d5d;"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>  
+            </div>
+        </div>
+
+        <div class="itemLV horizontalBox" >
+            <div class="image">
+                <img src="https://walmartcr.vtexassets.com/arquivos/ids/361154/Infusi-n-Manza-T-Jengibre-C-rcuma-20-unidades-2-69337.jpg?v=638036158517900000" alt="">
+            </div>
+    
+            <div class="info horizontalBox" style="justify-content: space-between;">
+                <p class="infoValue" style="width:100%;">Nombre: <span>Té de Curcuma</span></p>
+                <p class="infoValue" style="width:auto;">Tipo: <span>Bebida</span>
+                </p>   
+                <p class="infoValue"  style="width:auto;background-color: transparent;color: #636363;border:none;">Cantidad: <span>13</span></p>                
+            </div>
+    
+            <div class="options horizontalBox">
+                <a href="" class="button" style="background-color: #59e08a;"><i class="fa-solid fa-plus-minus" style="color: #ffffff;"></i></a>
+                <a href="" class="button" style="background-color: #f5e067;"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>    
+                <a href="#" class="button" style="background-color: #cd5d5d;"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>  
+            </div>
+        </div>
+
+        <div class="itemLV horizontalBox" >
+            <div class="image">
+                <img src="https://walmartcr.vtexassets.com/arquivos/ids/247697/Chocolate-Hershey-s-Galleta-Crema-Blanco-43gr-1-25517.jpg?v=637709786387730000" alt="">
+            </div>
+    
+            <div class="info horizontalBox" style="justify-content: space-between;">
+                <p class="infoValue" style="width:100%;">Nombre: <span>chocolate Hershey</span></p>
+                <p class="infoValue" style="width:auto;">Tipo: <span>Dulces</span>
+                </p>   
+                <p class="infoValue"  style="width:auto;background-color: transparent;color: #636363;border:none;">Cantidad: <span>87</span></p>                
+            </div>
+    
+            <div class="options horizontalBox">
+                <a href="" class="button" style="background-color: #59e08a;"><i class="fa-solid fa-plus-minus" style="color: #ffffff;"></i></a>
+                <a href="" class="button" style="background-color: #f5e067;"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>    
+                <a href="#" class="button" style="background-color: #cd5d5d;"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>  
+            </div>
+        </div>
+
+        <div class="itemLV horizontalBox" >
+            <div class="image">
+                <img src="https://triquitraque.cr/images/thumbs/0004284_salsa-lizano-botella-700ml.png" alt="">
+            </div>
+    
+            <div class="info horizontalBox" style="justify-content: space-between;">
+                <p class="infoValue" style="width:100%;">Nombre: <span>Salsa Lizano</span></p>
+                <p class="infoValue" style="width:auto;">Tipo: <span>Salsas</span>
+                </p>   
+                <p class="infoValue"  style="width:auto;background-color: transparent;color: #636363;border:none;">Cantidad: <span>67</span></p>                
+            </div>
+    
+            <div class="options horizontalBox">
+                <a href="" class="button" style="background-color: #59e08a;"><i class="fa-solid fa-plus-minus" style="color: #ffffff;"></i></a>
+                <a href="" class="button" style="background-color: #f5e067;"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>    
+                <a href="#" class="button" style="background-color: #cd5d5d;"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></a>  
+            </div>
+        </div>
+    
+    </div>
+
+
+
+
+<!-- <app-add-form *ngIf="showForm"></app-add-form> -->

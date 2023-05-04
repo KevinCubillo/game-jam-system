@@ -1,0 +1,127 @@
+<div class="titulo">
+    Rendimiento de ventas
+</div>
+
+<div class="subtitulo">
+    Utilidades
+</div>
+
+<div class="card">
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+            >
+              Utilidades (Mensuales)
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">₡40,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div
+              class="text-xs font-weight-bold text-success text-uppercase mb-1"
+            >
+              Utilidades (Anual)
+            </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">₡480,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+              Meta de Utilidades
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                  50%
+                </div>
+              </div>
+              <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: 50%"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="subtitulo">
+    Resumen de ventas
+</div>
+
+<div class="charts">
+  <div class="line">
+    <label class="titutloC">Ventas</label>
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+    ></canvas>
+  </div>
+
+  <div class="pie">
+    <label class="titutloC">Tipo de producto</label>
+    <canvas
+      baseChart
+      [data]="pieChartData"
+      [options]="barChartOptions"
+      [type]="pieChartType"
+    ></canvas>
+  </div>
+</div>
+
+<div class="subtitulo">
+    Evolución
+</div>
+
+<div class="charts2">
+<div class="linec">
+    <label class="titutloC">Evolución de ventas y gastos</label>
+    <canvas
+      baseChart
+      [data]="lineChartData"
+      [options]="barChartOptions"
+      [type]="lineChartType"
+    ></canvas>
+  </div>
+</div>
