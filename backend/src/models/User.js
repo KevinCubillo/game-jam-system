@@ -5,7 +5,6 @@ let validatedRols = {
     message: '{VALUE} is not a valid rol'
 }
 
-
 let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
@@ -17,7 +16,7 @@ let userSchema = new Schema({
             {
                 validator: function (value) {
                     return mongoose
-                        .model('Usuario')
+                        .model('User')
                         .findOne({ nombre: value })
                         .exec()
                         .then(user => !user);
@@ -34,7 +33,7 @@ let userSchema = new Schema({
             {
                 validator: function (value) {
                     return mongoose
-                        .model('Usuario')
+                        .model('User')
                         .findOne({ email: value })
                         .exec()
                         .then(user => !user);
@@ -53,7 +52,7 @@ let userSchema = new Schema({
         required: [true],
         enum: validatedRols,
     },
-});
+}, { timestamps: true });
 
 userSchema.methods.toJSON = function () {
     let user = this;
@@ -63,4 +62,5 @@ userSchema.methods.toJSON = function () {
     return userObject;
 };
 
-module.exports = mongoose.model('Usuario', userSchema)
+module.exports = mongoose.model('User', userSchema)
+

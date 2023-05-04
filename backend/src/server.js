@@ -2,20 +2,20 @@
 //--------------------------------------------
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
-
-
-require('./database');
-
-
-//--------------------------------------------
-
-// Configurations of the server
+app.use(express.json());
 //--------------------------------------------
 app.use(cors());
-app.use(express.json());
+
+require('./database');
+app.use(require('./routes/index'));
+
+
+
 app.listen(3000);
 console.log('Server running on port 3000');
 
-//--------------------------------------------
+
+
 
