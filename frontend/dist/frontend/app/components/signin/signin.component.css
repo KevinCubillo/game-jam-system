@@ -1,0 +1,29 @@
+.login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color : white;
+    max-width: 50%;
+    margin: 25vh auto 0 auto;
+}
+
+.btn{
+    background-color: #E75160;
+    border-color: #E75160;
+    color: white;
+    max-width: 100%;
+
+}
+
+.title {
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: aliceblue;
+    margin-bottom: 1.5rem;
+}

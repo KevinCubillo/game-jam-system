@@ -1,0 +1,29 @@
+<div class="tables ">
+    <label class="title">Admin Jams</label>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Theme</th>
+            <th scope="col">Actions</th> <!-- Agregamos una nueva columna para los botones de acción -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let jam of jams">
+            <td>{{jam.name}}</td>
+            <td>{{jam.startDate}}</td>
+            <td>{{jam.endDate}}</td>
+            <td>{{jam.theme}}</td>
+            <td class="actions ">
+              <!-- Agregamos los botones de editar y eliminar dentro de la nueva columna -->
+                <button type="button" class="btn btn-primary btn-sm btn-group-sm" (click)="edit(jam._id)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm btn-group-sm"  (click)="delete(jam._id)">Eliminar</button>
+            </td>
+          </tr>
+          <!-- Agregamos más filas con botones de acción -->
+        </tbody>
+      </table>
+      
+</div>
