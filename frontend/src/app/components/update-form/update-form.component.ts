@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Jam } from 'src/app/models/Jam';
 import { JamService } from 'src/app/services/jam.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-form-jam',
-  templateUrl: './form-jam.component.html',
-  styleUrls: ['./form-jam.component.css'],
-  
+  selector: 'app-update-form',
+  templateUrl: './update-form.component.html',
+  styleUrls: ['./update-form.component.css']
 })
-export class FormJamComponent implements OnInit{
-  constructor(private formBuilder:FormBuilder, private jamService: JamService, private router: Router, private ARoute:ActivatedRoute) { }
+export class UpdateFormComponent {
+  constructor(private formBuilder:FormBuilder, private jamService: JamService, private router: Router) { }
   public categories:string[] = []
   public experiences:string[] = []
-  private isUpdate: boolean = false;
-
+  public jam: Jam | undefined = history.state.jam;
 
   public formJam = this.formBuilder.group({
     id: [''],
@@ -26,18 +25,6 @@ export class FormJamComponent implements OnInit{
     theme: ['', Validators.required],
     categorie: ['', Validators.required],
   });
-
-  ngOnInit(): void {
-    this.ARoute.paramMap.subscribe((params) => {
-      const id = params.get('id');
-      if (id) {
-        this.jamService.getJamById(id).subscribe((jamData: Object) => {
-          const jam = jamData as Jam;
-          this.formJam.patchValue(jam);
-        });
-      }
-    });
-  }
 
 
   public setDropdownExperienceValue(value:string){
@@ -50,17 +37,10 @@ export class FormJamComponent implements OnInit{
   }
 
   public onSubmit() {
-    if(!this.isUpdate){
+    console.log(this.formJam.value)
     this.jamService.createJam(this.formJam.value).subscribe((data) => {
       console.log(data)
-    })}
-    else{
-      this.jamService.updateJam(this.formJam.value.id ?? "", this.formJam.value).subscribe((data) => {
-        console.log(data)
-      })
-    }
+    })
     this.router.navigate(['/list/jam']);
   }
-
-
 }

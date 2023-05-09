@@ -167,11 +167,11 @@ router.delete('/jams/:id', async (req, res) => {
     const id = req.params.id;
     try {
       const jam = await Jam.findById(id);
-  
+   
       if (!jam) {
         return res.status(404).json({ message: 'Jam not found' });
       }
-      await jam.remove();
+      await Jam.findByIdAndDelete(id);
 
       res.json({ message: 'Jam deleted successfully' });
     } catch (error) {

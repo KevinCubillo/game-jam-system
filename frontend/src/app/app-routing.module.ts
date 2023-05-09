@@ -11,6 +11,7 @@ import {JamsViewComponent} from './components/jams-view/jams-view.component';
 import { AuthGuard } from './auth.guard';
 import { FormJamComponent } from './components/form-jam/form-jam.component';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
+import { UpdateFormComponent } from './components/update-form/update-form.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'list/jam',
     component: TableJamComponent
+  },
+  {
+    path: 'update/jam/:id',
+    component: FormJamComponent
   }
 ];
 
