@@ -18,6 +18,7 @@ import { AuthGuard } from './auth.guard';
 import { JamsViewComponent } from './components/jams-view/jams-view.component';
 import { FormJamComponent } from './components/form-jam/form-jam.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TableJamComponent } from './components/table-jam/table-jam.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SigninComponent,
     PrivateComponent,
     JamsViewComponent,
-    FormJamComponent
+    FormJamComponent,
+    TableJamComponent
   ],
   imports: [
     BrowserModule,

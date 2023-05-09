@@ -10,6 +10,7 @@ import {JamsViewComponent} from './components/jams-view/jams-view.component';
 
 import { AuthGuard } from './auth.guard';
 import { FormJamComponent } from './components/form-jam/form-jam.component';
+import { TableJamComponent } from './components/table-jam/table-jam.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'create/jam',
     component: FormJamComponent
+  },
+  {
+    path: 'list/jam',
+    component: TableJamComponent
   }
 ];
 
