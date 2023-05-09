@@ -46,7 +46,7 @@ export class TableJamComponent implements OnInit {
   public edit(jamId: string): void {
     this.jamService.getJamById(jamId).subscribe((jamData: Object) => {
       const jam = jamData as Jam;
-      this.router.navigate(['/update/jam'], { state: { jam: jam } });
+      this.router.navigate(['/update/jam', jam._id]);
     });
   }
 }

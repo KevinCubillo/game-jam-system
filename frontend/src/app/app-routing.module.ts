@@ -49,8 +49,8 @@ const routes: Routes = [
     component: TableJamComponent
   },
   {
-    path: 'update/jam',
-    component: UpdateFormComponent
+    path: 'update/jam/:id',
+    component: FormJamComponent
   }
 ];
 
