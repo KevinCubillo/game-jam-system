@@ -18,15 +18,15 @@ export class JamService {
     return this.http.get(this.url + "jams");
   }
 
-  public getJamById(id: number) {
+  public getJamById(id: string) {
     return this.http.get(this.url + "jams/" + id);
   }
 
-  public updateJam(id: number, jam: any) {
+  public updateJam(id: string, jam: any) {
     return this.http.put(this.url + "jams/" + id, jam);
   }
 
-  public deleteJam(id: number) {
+  public deleteJam(id: string) {
     return this.http.delete(this.url + "jams/" + id);
   }
 

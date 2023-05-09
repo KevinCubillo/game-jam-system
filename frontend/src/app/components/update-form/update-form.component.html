@@ -1,0 +1,68 @@
+
+<div class="form" style="height: auto;">
+    <label class="title">Update <span style="color:#E75160">Jam</span></label>
+    {{ formJam.value | json }}
+    <form [formGroup]="formJam">
+      <!--Name-->
+        <div class="form-group">
+          <label >Name {{jam}}</label>
+          <input type="text" autocomplete="off" class="form-control" id="email" formControlName="name">
+        </div>
+    
+      <!--Start date-->
+        <div class="form-group">
+          <label>Start date:</label>
+          <input type="datetime-local" class="form-control" formControlName="startDate">
+        </div>
+    
+      <!--End date-->
+        <div class="form-group">
+            <label>End date:</label>
+            <input type="datetime-local" class="form-control" formControlName="endDate">
+          </div>
+    
+      <!--Theme-->
+          <div class="form-group">
+            <label>Theme:</label>
+            <input type="text" autocomplete="off" class="form-control" formControlName="theme">
+          </div>
+          
+          <label class="subTittle">Categories:</label>
+    
+      <!--Checkboxes-->
+      <div class="d-flex justify-content-start checkbox mt-4">
+    <div class="d-flex justify-content-center">
+      <label style="margin-right: 15px;">Category1</label>
+      <label class="switch">
+        <input type="checkbox" (click)="onToggle('category1')">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+    <div class="d-flex justify-content-center mx-3">
+      <label style="margin-right: 15px;" (click)="onToggle('category2')" >Category2</label>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+    <div class="d-flex justify-content-center">
+      <label style="margin-right: 15px;" (click)="onToggle('category3')">Category3</label>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+    
+    
+    </div>
+    <!--btn submit-->
+        <button type="submit" class="btn btn-default" style="margin-left: 92%;" [disabled]="formJam.invalid">Update</button>
+      </form>
+      
+    </div>
+    
+    
+    

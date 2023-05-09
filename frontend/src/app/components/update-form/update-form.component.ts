@@ -5,16 +5,19 @@ import { Jam } from 'src/app/models/Jam';
 import { JamService } from 'src/app/services/jam.service';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-form-jam',
-  templateUrl: './form-jam.component.html',
-  styleUrls: ['./form-jam.component.css'],
-  
+  selector: 'app-update-form',
+  templateUrl: './update-form.component.html',
+  styleUrls: ['./update-form.component.css']
 })
-export class FormJamComponent {
+export class UpdateFormComponent {
   constructor(private formBuilder:FormBuilder, private jamService: JamService, private router: Router) { }
   public categories:string[] = []
   public experiences:string[] = []
+  public jam: Jam | undefined = history.state.jam;
+
+
 
 
   public formJam = this.formBuilder.group({
@@ -43,6 +46,4 @@ export class FormJamComponent {
     })
     this.router.navigate(['/list/jam']);
   }
-
-
 }
