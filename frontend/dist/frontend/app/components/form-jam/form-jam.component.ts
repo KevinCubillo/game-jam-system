@@ -31,6 +31,7 @@ export class FormJamComponent implements OnInit{
     this.ARoute.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
+        this.isUpdate = true;
         this.jamService.getJamById(id).subscribe((jamData: Object) => {
           const jam = jamData as Jam;
           this.formJam.patchValue(jam);
