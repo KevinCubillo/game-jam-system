@@ -4,19 +4,46 @@ const router = Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Jam = require('../models/Jam');
+const createUser = require('../models/UserFactory');
+const Observer = require('../models/EventMangager');
+const notificationObserver = new Observer();
 
 router.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-router.post('/signup', async (req, res) => { 
-    const {nombre,email, password,role} = req.body;
-    const newUser = new User({nombre,email, password,role});
-    await newUser.save();
-    
-    const token = jwt.sign({_id:newUser._id}, 'secretkey')
-    res.status(200).json({token})
+User.find({ role: "ADMIN" }).then(adminUsers => {
+  adminUsers.forEach(adminUser => {
+      notificationObserver.subscribe(adminUser);
+  });
 });
+async function subscribeExistingUsers() {
+  try {
+    const users = await User.find();
+    users.forEach(user => {
+      notificationObserver.subscribe(user);
+    });
+  } catch (err) {
+    console.error('Error subscribing existing users:', err);
+  }
+}
+
+router.post('/signup', async (req, res) => {
+  const { nombre, email, password, role } = req.body;
+
+  // Crea una instancia del usuario según el rol
+  const newUser = createUser(role, { nombre, email, password, role });
+
+  await newUser.save();
+
+  // Suscribe al usuario al Observer de notificaciones
+  notificationObserver.subscribe(newUser);
+
+  const token = jwt.sign({ _id: newUser._id }, 'secretkey');
+  res.status(200).json({ token });
+});
+
+
 
 router.post('/signin', async (req, res) => {
     const {email, password} = req.body;
@@ -92,15 +119,27 @@ router.get('/jams/:id', async (req, res) => {
   
 // Ruta para crear una nueva Jam
 router.post('/jams', async (req, res) => {
-    try {
-      const jam = new Jam(req.body);
-      const savedJam = await jam.save();
-      res.status(201).json(savedJam);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: 'Error creating jam' });
-    }
-  });
+  console.log('Entering POST /jams route');
+  console.log('Request body:', req.body);
+
+  try {
+    const jam = new Jam(req.body);
+    const savedJam = await jam.save();
+
+    // Notifica a los observadores cuando se crea una nueva Jam
+    const notificationData = {
+        notificationType: 'NEW_JAM',
+        notificationText: `A new Jam has been created: ${jam.theme}`
+    };
+    notificationObserver.notify(notificationData);
+
+    res.status(201).json(savedJam);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error creating jam' });
+  }
+});
+
 
   
 // Ruta para actualizar una Jam existente por su ID
@@ -142,4 +181,6 @@ router.delete('/jams/:id', async (req, res) => {
   });
 
 //--------------------------------------------
-module.exports = router;
+module.exports.router = router;
+module.exports.notificationObserver = notificationObserver;
+

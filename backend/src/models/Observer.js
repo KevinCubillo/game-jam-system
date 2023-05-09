@@ -1,0 +1,4 @@
+class ObserverInterface {
+    update(data) {
+    }
+  }

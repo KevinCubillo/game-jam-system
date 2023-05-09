@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const notificationSchema = require('./notification');
 
 let validatedRols = {
     values: ["ADMIN", "USER"],
@@ -10,37 +11,13 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
     nombre: {
         type: String,
-        unique: true,
         required: [true, "The name is necesary"],
-        validate: [
-            {
-                validator: function (value) {
-                    return mongoose
-                        .model('User')
-                        .findOne({ nombre: value })
-                        .exec()
-                        .then(user => !user);
-                },
-                message: '{PATH} must be unique'
-            }
-        ]
+
     },
     email: {
         type: String,
-        unique: true,
         required: [true, "The password is necesary"],
-        validate: [
-            {
-                validator: function (value) {
-                    return mongoose
-                        .model('User')
-                        .findOne({ email: value })
-                        .exec()
-                        .then(user => !user);
-                },
-                message: '{PATH} must be unique'
-            }
-        ]
+
     },
     password: {
         type: String,
@@ -52,7 +29,9 @@ let userSchema = new Schema({
         required: [true],
         enum: validatedRols,
     },
+    notifications: [notificationSchema]
 }, { timestamps: true });
+
 
 userSchema.methods.toJSON = function () {
     let user = this;
@@ -61,6 +40,11 @@ userSchema.methods.toJSON = function () {
 
     return userObject;
 };
+
+userSchema.methods.update = async function (data) {
+    this.notifications.push(data);
+    await this.save();
+  };
 
 module.exports = mongoose.model('User', userSchema)
 
