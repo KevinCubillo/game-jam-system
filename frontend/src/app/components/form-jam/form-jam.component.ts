@@ -22,15 +22,10 @@ export class FormJamComponent {
     startDateTime: ['', Validators.required],
     endDateTime: ['', Validators.required],
     theme: ['', Validators.required],
-    stadistics: new FormControl([]),
-    experience: this.formBuilder.array([]),
   });
 
 
   public setDropdownExperienceValue(value:string){
     this.experiences.push(value)
-    this.formJam.controls['experience'].setValue(this.experiences)
   }
-
-
 }
