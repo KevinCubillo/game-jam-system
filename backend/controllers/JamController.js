@@ -31,6 +31,7 @@ exports.getJamById = async (req, res, next) => {
   }
 };
 
+
 // Update a jam by ID
 exports.updateJamById = async (req, res, next) => {
   try {

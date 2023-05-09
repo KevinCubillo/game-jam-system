@@ -11,11 +11,11 @@ const jamSchema = new mongoose.Schema({
     required: true
   },
   endDate: {
-    type: Date,
+    type: DateTime,
     required: true
   },
   startDate: {
-    type: Date,
+    type: DateTime,
     required: true
   },
   theme: {
