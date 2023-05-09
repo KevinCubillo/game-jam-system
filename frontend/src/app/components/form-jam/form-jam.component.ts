@@ -18,8 +18,8 @@ export class FormJamComponent {
   public formJam = this.formBuilder.group({
     id: [''],
     name: ['', Validators.required],
-    startDateTime: ['', Validators.required],
-    endDateTime: ['', Validators.required],
+    startDate: ['', Validators.required],
+    endDate: ['', Validators.required],
     theme: ['', Validators.required],
     categorie: ['', Validators.required],
   });

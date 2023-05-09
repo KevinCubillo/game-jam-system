@@ -87,7 +87,7 @@ function verifyToken(req, res, next) {
     req.userId = payload._id;
     next();
 }
-k
+
 //--------------------------------------------
 // Routes del Jam Controller
 //--------------------------------------------
