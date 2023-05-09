@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let notificationSchema = new Schema({
+const notificationSchema = new mongoose.Schema({
     notificationType: {
-        type: String,
-        required: [true, "Notification type is required"]
-    },
-    seen: {
-        type: Boolean,
-        default: false
+      type: String,
+      required: true
     },
     notificationText: {
-        type: String,
-        required: [true, "Notification text is required"]
-    }
+      type: String,
+      required: true
+    },
+    read: {
+      type: Boolean,
+      default: false
+    
+  }
 }, { timestamps: true });
 
 module.exports = notificationSchema; 

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Jam = require('../models/Jam');
 const createUser = require('../models/UserFactory');
-const Observer = require('../models/Observer');
+const Observer = require('../models/EventMangager');
 const notificationObserver = new Observer();
 
 router.get('/', (req, res) => {
