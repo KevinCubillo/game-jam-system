@@ -17,9 +17,6 @@ export class UpdateFormComponent {
   public experiences:string[] = []
   public jam: Jam | undefined = history.state.jam;
 
-
-
-
   public formJam = this.formBuilder.group({
     id: [''],
     name: ['', Validators.required],
