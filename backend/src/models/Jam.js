@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Esquema de la colecciÃ³n Jams
+// Esquema de la coleccion Jams
 const jamSchema = new mongoose.Schema({
   categories: {
     type: String,
