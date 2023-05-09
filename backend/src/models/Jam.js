@@ -6,6 +6,10 @@ const jamSchema = new mongoose.Schema({
     type: String,
     enum: ['category1', 'category2', 'category3'] // categorias
   },
+  name: {
+    type: String,
+    required: true
+  },
   endDate: {
     type: Date,
     required: true
