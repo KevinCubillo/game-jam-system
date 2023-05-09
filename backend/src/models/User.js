@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const notificationSchema = require('./notification');
+const notificationSchema = require('./Notification');
 
 let validatedRols = {
     values: ["ADMIN", "USER"],
