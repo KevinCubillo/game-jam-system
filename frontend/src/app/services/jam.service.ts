@@ -9,7 +9,7 @@ export class JamService {
   constructor(private http:HttpClient) { }
 
   private url: string = "http://192.18.134.234:3000/";
-
+  
   public createJam(jam: any) {
     return this.http.post(this.url + "jams", jam);
   }
@@ -23,6 +23,8 @@ export class JamService {
   }
 
   public updateJam(id: string, jam: any) {
+    console.log(jam);
+    console.log(id);
     return this.http.put(this.url + "jams/" + id, jam);
   }
 

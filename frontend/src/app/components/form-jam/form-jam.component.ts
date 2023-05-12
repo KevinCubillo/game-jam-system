@@ -16,6 +16,7 @@ export class FormJamComponent implements OnInit{
   public categories:string[] = []
   public experiences:string[] = []
   private isUpdate: boolean = false;
+  private Id: string = "";
 
 
   public formJam = this.formBuilder.group({
@@ -31,6 +32,7 @@ export class FormJamComponent implements OnInit{
     this.ARoute.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
+        this.Id = id;
         this.isUpdate = true;
         this.jamService.getJamById(id).subscribe((jamData: Object) => {
           const jam = jamData as Jam;
@@ -56,7 +58,7 @@ export class FormJamComponent implements OnInit{
       console.log(data)
     })}
     else{
-      this.jamService.updateJam(this.formJam.value.id ?? "", this.formJam.value).subscribe((data) => {
+      this.jamService.updateJam(this.Id ?? "", this.formJam.value).subscribe((data) => {
         console.log(data)
       })
     }
