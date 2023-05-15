@@ -8,11 +8,11 @@ import { catchError,switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'http://192.18.134.234:3000/api';
+  private URL: string = "http://192.18.134.234:3000/";
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(user: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(this.URL + '/userExists', user).pipe(
+    return this.http.post<any>(this.URL + 'userExists', user).pipe(
       catchError((err) => {
         if (err.status === 409) {
           // Email already exists
@@ -21,12 +21,12 @@ export class AuthService {
           throw err;
         }
       }),
-      switchMap(() => this.http.post<any>(this.URL + '/signup', user))
+      switchMap(() => this.http.post<any>(this.URL + 'signup', user))
     );
   }
 
   signIn(user: { email: string; password: string }) {
-    return this.http.post<any>(this.URL + '/signin', user);
+    return this.http.post<any>(this.URL + 'signin', user);
   }
 
   loggedIn() {
@@ -39,7 +39,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/signin']);
+    this.router.navigate(['signin']);
   }
 }
 
