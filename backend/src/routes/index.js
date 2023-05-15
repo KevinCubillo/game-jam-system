@@ -43,6 +43,7 @@ router.post('/signup', async (req, res) => {
   res.status(200).json({ token });
 });
 
+router.post('')
 
 
 router.post('/signin', async (req, res) => {
@@ -87,7 +88,15 @@ function verifyToken(req, res, next) {
     req.userId = payload._id;
     next();
 }
-
+router.post('/userExists', async (req, res) => {
+  const { email } = req.body;
+  const existingUser = await User.findOne({ email: email });;
+  if (existingUser) {
+    res.status(409).send('El correo electrónico ya está en uso.');
+  } else {
+    res.status(200).send();
+  }
+});
 //--------------------------------------------
 // Routes del Jam Controller
 //--------------------------------------------

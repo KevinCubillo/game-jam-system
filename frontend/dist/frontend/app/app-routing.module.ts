@@ -42,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: 'create/jam',
-    component: FormJamComponent
+    component: FormJamComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'list/jam',

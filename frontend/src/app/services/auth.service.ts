@@ -8,14 +8,13 @@ import { catchError,switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'http://192.18.134.234:3000/api';
+  private URL: string = "http://192.18.134.234:3000";
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(user: { email: string; password: string }): Observable<any> {
     return this.http.post<any>(this.URL + '/userExists', user).pipe(
       catchError((err) => {
         if (err.status === 409) {
-          // Email already exists
           throw new Error('El correo electrónico ya está en uso.');
         } else {
           throw err;
