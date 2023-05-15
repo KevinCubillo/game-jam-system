@@ -8,7 +8,7 @@ export class JamService {
 
   constructor(private http:HttpClient) { }
 
-  private url: string = "http://192.18.134.234:3000/";
+  private url: string = "http://localhost:3000/";
   
   public createJam(jam: any) {
     return this.http.post(this.url + "jams", jam);
