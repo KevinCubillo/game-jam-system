@@ -88,6 +88,18 @@ function verifyToken(req, res, next) {
     next();
 }
 
+
+router.post('/userExists', async (req, res) => {
+  const { email } = req.body;
+  const existingUser = await User.findOne({ email: email });;
+  if (existingUser) {
+    res.status(409).send('El correo electrónico ya está en uso.');
+  } else {
+    res.status(200).send();
+  }
+});
+
+
 //--------------------------------------------
 // Routes del Jam Controller
 //--------------------------------------------

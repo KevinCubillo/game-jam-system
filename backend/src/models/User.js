@@ -10,9 +10,8 @@ let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
     nombre: {
-        type: String,
-        required: [true, "The name is necesary"],
-
+        type: String
+       
     },
     email: {
         type: String,
@@ -25,10 +24,9 @@ let userSchema = new Schema({
     },
     role: {
         type: String,
-        default: 'USER',
-        required: [true],
-        enum: validatedRols,
+        default: 'USER'
     },
+    
     notifications: [notificationSchema]
 }, { timestamps: true });
 
