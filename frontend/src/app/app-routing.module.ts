@@ -11,7 +11,8 @@ import {JamsViewComponent} from './components/jams-view/jams-view.component';
 import { AuthGuard } from './auth.guard';
 import { FormJamComponent } from './components/form-jam/form-jam.component';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
-import { UpdateFormComponent } from './components/update-form/update-form.component';
+
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,15 @@ const routes: Routes = [
     component: SigninComponent
   },
   {
+    path:'profile',
+    component: ProfileComponent,
+    //canActivate: [AuthGuard]
+  },
+  {
+    path:'user/:id',
+    component: ProfileComponent,
+  },
+  {
     path: 'main',
     component: JamsViewComponent
   },
@@ -53,6 +63,9 @@ const routes: Routes = [
     path: 'update/jam/:id',
     component: FormJamComponent
   }
+  
+
+
 ];
 
 @NgModule({

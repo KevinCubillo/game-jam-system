@@ -22,4 +22,9 @@
 .test{
     background-color: #ffffff;
 }
-    
+
+.header-area {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}

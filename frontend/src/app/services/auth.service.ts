@@ -3,15 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError,switchMap } from 'rxjs/operators';
+import { User } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'http://192.18.134.234:3000';
+  private URL: string = "http://localhost:3000";
 
   constructor(private http: HttpClient, private router: Router) {}
-  signUp(user: { email: string; password: string }): Observable<any> {
+  signUp(user: { email: string; password: string, nombre: string }): Observable<any> {
+
     return this.http.post<any>(this.URL + '/userExists', user).pipe(
       catchError((err) => {
         if (err.status === 409) {
@@ -40,5 +42,22 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
   }
+
+  
+  //get user id
+  getUserId() {
+    return localStorage.getItem('userId');
+}
+
+  getUserDetails(userId: string): Observable<User> {
+    return this.http.get<User>(`${this.URL}/users/${userId}`);
+  }
+
+  updateUser(user: User): Observable<User> {
+    const userId = localStorage.getItem('userId')
+    return this.http.put<User>(`${this.URL}/users/${userId}`, user);
+  }
+  
+
 }
 

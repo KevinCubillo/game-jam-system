@@ -11,27 +11,39 @@ let Schema = mongoose.Schema;
 let userSchema = new Schema({
     nombre: {
         type: String,
-        //required: [true, "The name is necesary"],
-
+        required: [true, "The name is necessary"],
+    },
+    lastname: {
+        type:String,
     },
     email: {
         type: String,
-        required: [true, "The password is necesary"],
-
+        required: [true, "The email is necessary"],
     },
     password: {
         type: String,
-        required: [true, "Password must required"]
+        required: [true, "Password must be provided"]
     },
     role: {
         type: String,
         default: 'USER',
-        //required: [true],
         enum: validatedRols,
+    },
+    gender: {
+        type: String,
+        enum: ['Male', 'Female', 'Other'], // Agrega o modifica estos valores según tus necesidades
+    },
+    timezone: {
+        type: String,
+    },
+    phoneNumber: {
+        type: String,
+    },
+    birthdate: {
+        type: Date,
     },
     notifications: [notificationSchema]
 }, { timestamps: true });
-
 
 userSchema.methods.toJSON = function () {
     let user = this;
@@ -44,7 +56,8 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.update = async function (data) {
     this.notifications.push(data);
     await this.save();
-  };
+};
 
 module.exports = mongoose.model('User', userSchema)
+
 
