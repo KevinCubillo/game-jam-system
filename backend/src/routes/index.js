@@ -39,8 +39,8 @@ router.post('/signup', async (req, res) => {
   // Suscribe al usuario al Observer de notificaciones
   notificationObserver.subscribe(newUser);
 
-    const token = jwt.sign({_id: user._id}, 'secretkey');
-    return res.status(200).json({token, user: user.toObject({ virtuals: true })});
+    const token = jwt.sign({_id: newUser._id}, 'secretkey');
+    return res.status(200).json({token, user: newUser.toObject({ virtuals: true })});
 });
 
 router.post('')
