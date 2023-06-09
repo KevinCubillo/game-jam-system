@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AssignMentorTableComponent } from './components/assign-mentor-table/assign-mentor-table.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormJamComponent,
     TableJamComponent,
     UpdateFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    AssignMentorTableComponent
 
   ],
   imports: [

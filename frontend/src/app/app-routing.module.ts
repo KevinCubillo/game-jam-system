@@ -13,6 +13,7 @@ import { FormJamComponent } from './components/form-jam/form-jam.component';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
+import { AssignMentorTableComponent } from './components/assign-mentor-table/assign-mentor-table.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'update/jam/:id',
     component: FormJamComponent
+  },
+  {
+    path: 'assign/mentor',
+    component: AssignMentorTableComponent
   }
   
 
