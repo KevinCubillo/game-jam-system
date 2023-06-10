@@ -8,7 +8,7 @@ import { catchError,switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private URL = 'http://192.18.134.234:3000';
+  private URL = 'http://localhost:3000';
 
   constructor(private http: HttpClient, private router: Router) {}
   signUp(user: { email: string; password: string }): Observable<any> {
