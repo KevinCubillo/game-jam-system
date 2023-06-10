@@ -51,3 +51,8 @@
     color: aliceblue;
     margin-bottom: 1.5rem;
 }
+
+.searchButton {
+    display: flex;
+    max-width: 20%;
+}
