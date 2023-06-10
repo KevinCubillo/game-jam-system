@@ -1,0 +1,84 @@
+<div class="bg-white rounded container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="saveProfile()">
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label class="labels">Email</label>
+              <input type="text" class="form-control" formControlName="email" readonly>
+            </div>
+            <div class="col-md-12">
+              <label class="labels">Role</label>
+              <input type="text" class="form-control" formControlName="role" readonly>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Name</label>
+              <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <div class="col-md-6">
+              <label class="labels">LastName</label>
+              <input type="text" class="form-control" formControlName="lastname">
+            </div>
+
+            <div class="col-md-6">
+              <label class="labels">Gender</label>
+              <select class="form-control" formControlName="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="labels">Timezone</label>
+              <select class="form-control" formControlName="timezone">
+                <option value="UTC-12:00">UTC-12:00</option>
+                <option value="UTC-11:00">UTC-11:00</option>
+                <option value="UTC-10:00">UTC-10:00</option>
+                <option value="UTC-9:00">UTC-9:00</option>
+                <option value="UTC-8:00">UTC-8:00</option>
+                <option value="UTC-7:00">UTC-7:00</option>
+                <option value="UTC-6:00">UTC-6:00</option>
+                <option value="UTC-5:00">UTC-5:00</option>
+                <option value="UTC-4:00">UTC-4:00</option>
+                <option value="UTC-3:00">UTC-3:00</option>
+                <option value="UTC-2:00">UTC-2:00</option>
+                <option value="UTC-1:00">UTC-1:00</option>
+                <option value="UTC+0:00">UTC+0:00</option>
+                <option value="UTC+1:00">UTC+1:00</option>
+                <option value="UTC+2:00">UTC+2:00</option>
+                <option value="UTC+3:00">UTC+3:00</option>
+                <option value="UTC+4:00">UTC+4:00</option>
+                <option value="UTC+5:00">UTC+5:00</option>
+                <option value="UTC+6:00">UTC+6:00</option>
+                <option value="UTC+7:00">UTC+7:00</option>
+                <option value="UTC+8:00">UTC+8:00</option>
+                <option value="UTC+9:00">UTC+9:00</option>
+                <option value="UTC+10:00">UTC+10:00</option>
+                <option value="UTC+11:00">UTC+11:00</option>
+                <option value="UTC+12:00">UTC+12:00</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Phone Number</label>
+              <input type="text" class="form-control" formControlName="phoneNumber">
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Birthdate</label>
+              <input type="date" class="form-control" formControlName="birthdate">
+            </div>
+          </div>
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { SingleJamViewComponent } from './components/single-jam-view/single-jam-
     FormJamComponent,
     TableJamComponent,
     UpdateFormComponent,
-    SingleJamViewComponent
+    SingleJamViewComponent,
+    ProfileComponent
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { SingleJamViewComponent } from './components/single-jam-view/single-jam-
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
-    
+
 
   ],
   providers: [

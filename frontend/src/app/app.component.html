@@ -11,19 +11,31 @@
 
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                      <li><a routerLink ="/main" class="active">Home</a></li>
+                      <li><a routerLink ="/main">Home</a></li>
                       <li><a routerLink="/create/jam">Create Jam</a></li>
                       <li><a routerLink="/list/jam">Table Jam</a></li>
-                      <li><a routerLink="/signup">SignUp</a></li>
                       <li><a routerLink="streams.html">Streams</a></li>
+                      <ng-container *ngIf="!authService.loggedIn();else loggedIn">
+                        <li><a routerLink="/signup">SignUp</a></li>
+                        <li><a routerLink="/signin">SignIn</a></li>
+                      </ng-container>
+                      <ng-template #loggedIn>
+                        <li>
+                            <a class="nav-link" (click)="authService.logout()">Logout</a>
+                        </li>
+                      </ng-template>
                       <li><a routerLink="index.html"><i class="fa-regular fa-bell" style="color:#E75160; font-size: 1.2rem;"></i></a></li>
-                      <li><a routerLink="profile.html">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
-                  </ul>   
+                      <li><a routerLink="/profile">Profile </a></li>
+
+                  </ul>
                   <a class='menu-trigger'>
                       <span>Menu</span>
                   </a>
                   <!-- ***** Menu End ***** -->
               </nav>
+
+
+
           </div>
       </div>
   </div>

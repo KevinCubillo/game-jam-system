@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: User = { email: '', password: '' };
+  user: User = { email: '', password: '', nombre: '', lastname: '', role: '' };
+
+
   successMessage: string = '';
   errorMessage: string = '';
   emailError: string = '';
@@ -31,6 +33,7 @@ export class SignupComponent implements OnInit {
     res => {
       console.log(res);
       localStorage.setItem('token', res.token);
+      localStorage.setItem('userId', res.user._id);
       localStorage.setItem('successMessage', 'Welcome, successful login.');
       this.router.navigate(['/private']);
     },
