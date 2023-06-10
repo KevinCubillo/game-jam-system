@@ -57,7 +57,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <div class="col-lg-3 col-sm-6" *ngFor="let jam of jams">
                     <div class="item">
                       <img  alt="" src="assets/images/Banner.jpg">
-                      <h4><p style="font-size: 1.2rem;color:#fff;font-weight: bold;">{{ jam.name }}</p><br><span>Theme: {{ jam.theme }}</span><span>Categorias: {{ jam.categories }}</span></h4>
+                      <h4><p style="font-size: 1.2rem;color:#fff;font-weight: bold;">{{ jam.name }}</p><br><span>Theme: {{ jam.theme }}</span><span *ngFor="let category of jam.categories">Categorias: {{ category[0] }}</span></h4>
                       <br/><a [routerLink]="['/singlejam', jam._id]">See More</a>
                     </div>
                   </div>
