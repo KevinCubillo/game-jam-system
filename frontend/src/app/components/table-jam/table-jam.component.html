@@ -7,6 +7,7 @@
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Theme</th>
+            <th scope="col">Categories</th>
             <th scope="col">Actions</th> <!-- Agregamos una nueva columna para los botones de acción -->
           </tr>
         </thead>
@@ -16,6 +17,11 @@
             <td>{{jam.startDate}}</td>
             <td>{{jam.endDate}}</td>
             <td>{{jam.theme}}</td>
+            <td>
+              <span *ngFor="let category of jam.categories">
+                {{ category[0] }}
+              </span>
+            </td>
             <td class="actions ">
               <!-- Agregamos los botones de editar y eliminar dentro de la nueva columna -->
                 <button type="button" class="btn btn-primary btn-sm btn-group-sm" (click)="edit(jam._id)">Editar</button>

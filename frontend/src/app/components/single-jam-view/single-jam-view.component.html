@@ -1,0 +1,41 @@
+<div class="Jamcontainer">
+    <h1 class="details"><i class="fa-solid fa-gamepad"></i>Jam's Details</h1>
+    <div class="jam-details">
+      <div class="divL">
+        <h3 class="jam-name">{{ jam.name }}</h3>
+        <img src="assets/images/Banner.jpg" alt="">
+        <h3 class="jam-sites">Sites</h3>
+        <div class="sites">
+            <div class="site"><i class="fa-solid fa-map-location-dot"></i> León XIII</div>
+            <div class="site"><i class="fa-solid fa-map-location-dot"></i> La Reforma</div>
+            <div class="site"><i class="fa-solid fa-map-location-dot"></i> La Carpio</div>
+            <div class="site"><i class="fa-solid fa-map-location-dot"></i> Los Hatillos</div>
+          <!-- <div class="site" *ngFor="let site of jam.sites"><i class="fa-solid fa-map-location-dot"></i> {{ site }}</div> -->
+        </div>
+      </div>
+      <div class="divR">
+        <h3 class="jam-theme">Theme: <span class="theme">{{ jam.theme }}</span></h3><br/>
+        <div class="gray">
+          <h3 class="jam-name">Categories</h3>
+          <div class="categories">
+            <div *ngFor="let category of jam.categories">
+              <div class="item"><i class="fa-solid fa-tags iconk"></i><span style="font-size:1.2rem;font-weight: bolder;">Name: {{ category[0] }}</span></div>
+              <div class="item"><i class="fa-regular fa-file-lines iconk"></i><span style="font-size:1.2rem;">Description {{ category[1] }}</span></div>
+            </div>
+            <!-- <div class="item" *ngFor="let category of jam.categories">{{ category }}</div> -->
+          </div>
+        </div>
+        <div class="dates">
+          <div class="date">
+            <i class="fa-regular fa-calendar-check iconP"></i>
+            <p class="jam-start-date">Starts: {{ jam.startDate }}<span class="start-date"></span></p>
+          </div>
+          <div class="date">
+            <i class="fa-regular fa-calendar-xmark iconP"></i>
+            <p class="jam-end-date">Ends: {{ jam.endDate }}<span class="end-date"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
