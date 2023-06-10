@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 // Esquema de la coleccion Jams
 const jamSchema = new mongoose.Schema({
   categories: {
-    type: String,
-    enum: ['category1', 'category2', 'category3'] // categorias
+    type: [[String]], 
+    required: true
   },
   name: {
     type: String,

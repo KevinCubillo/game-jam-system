@@ -20,6 +20,7 @@ import { FormJamComponent } from './components/form-jam/form-jam.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
+import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AssignMentorTableComponent } from './components/assign-mentor-table/assign-mentor-table.component';
 
@@ -35,7 +36,9 @@ import { AssignMentorTableComponent } from './components/assign-mentor-table/ass
     TableJamComponent,
     UpdateFormComponent,
     ProfileComponent,
-    AssignMentorTableComponent
+    AssignMentorTableComponent,
+    SingleJamViewComponent,
+    ProfileComponent
 
   ],
   imports: [
