@@ -3,7 +3,7 @@ export interface User {
   password: string;
   nombre: string;
   lastname: string;
-  role: string;
+  role: string[]; 
   gender?: string;
   timezone?: string;
   phoneNumber?: string;

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const notificationSchema = require('./Notification');
 
 let validatedRols = {
-    values: ["ADMIN", "USER"],
-    message: '{VALUE} is not a valid rol'
+    values: ['ADMIN', 'USER'],
+    message: '{VALUE} is not a valid role'
 }
 
 let Schema = mongoose.Schema;
@@ -25,9 +25,11 @@ let userSchema = new Schema({
         required: [true, "Password must be provided"]
     },
     role: {
-        type: String,
-        default: 'USER',
-        enum: validatedRols,
+        type: [{
+            type: String,
+            enum: validatedRols.values
+        }],
+        default: ['USER']
     },
     gender: {
         type: String,

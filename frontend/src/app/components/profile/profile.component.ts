@@ -18,8 +18,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      email: [{value: '', disabled: true}], // Hacerlo ineditable
-      role: [{value: '', disabled: true}], // Hacerlo ineditable
+      email: [{value: '', disabled: true}],
+      role: [null],
       nombre: ['', Validators.required],
       lastname: ['', Validators.required],
       gender: ['', Validators.required],
@@ -30,25 +30,36 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userId = localStorage.getItem('userId')
+    const userId = localStorage.getItem('userId');
     if (userId !== null) {
       this.authService.getUserDetails(userId)
         .subscribe(
-          user => this.userForm.patchValue(user),
+          user => {
+            const formattedUser = {
+              ...user,
+              birthdate: user.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : null,
+            };
+            this.userForm.patchValue(formattedUser);
+            this.userForm.get('role')?.setValue(user.role);
+          },
           error => console.error(error)
         );
     } else {
-      // Manejar el caso en que 'userId' es null, quizás redirigir al usuario o mostrar un mensaje de error
+      console.error('No user id');
     }
   }
+  
+  
 
   saveProfile(): void {
-    this.authService.updateUser(this.userForm.value)
+    const user: User = this.userForm.value;
+    user.role = user.role.flat(); 
+    this.authService.updateUser(user)
       .subscribe(
         () => console.log('User updated successfully'),
         error => console.error('Error updating user', error)
       );
   }
+  
 }
-
 
