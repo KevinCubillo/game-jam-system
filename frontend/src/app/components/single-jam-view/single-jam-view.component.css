@@ -1,0 +1,172 @@
+.Jamcontainer{
+    width: 80%;
+    margin: 10rem auto 3rem auto;
+    padding: 20px;
+    background-color: #323232;
+    border-radius: 1rem;
+}
+
+.jam-details{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-top:4px dashed #fff;
+    padding-top: 2rem;
+}
+
+
+.details{
+    color: white;
+    font-weight: bolder;
+    font-size: 3.5rem;
+}
+
+.divL{
+    width: 35%;
+    height:100%;
+}
+
+.divL img{
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+.divR{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+
+.jam-name {
+    color: #ececec;
+    margin-bottom:1rem;
+}
+
+.jam-sites{
+    color: #ececec;
+    margin-top: 2rem;
+}
+
+.jam-theme{
+    color: #ececec;
+}
+
+.theme{
+    background-color: #E75160;
+    padding: .3rem 2rem;
+    border-radius: .5rem;
+    margin-left: 1rem;
+    color:#ffffff;
+    font-weight: bolder;
+    font-size: 1.7rem;
+}
+
+.gray{
+    background-color: #3d3e3e;
+    padding:1rem;
+    border-radius: .5rem;
+}
+.sites{
+    width:100%;
+    height: auto;
+}
+
+.sites > div{
+    width: 100%;
+    height: auto;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    margin-top: .5rem;
+    background-color: rgb(64, 53, 80);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:white;
+}
+
+.categories{
+    width:100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.categories > div{
+    padding: .2rem 1.5rem;
+    margin:.3rem;
+    border-radius: .5rem;
+    background-color:#323232;
+    font-size: 1rem;
+    color:rgb(228, 228, 228);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item{
+    width: 100%;
+    margin: .5rem 1rem;
+}
+
+
+
+.jam-category {
+    font-weight: bold;
+
+}
+
+.jam-start-date, .jam-end-date, .jam-theme {
+margin-bottom: 10px;
+}
+
+.jam-experiences {
+list-style: none;
+padding: 0;
+}
+
+.jam-experiences li {
+margin-bottom: 5px;
+}
+
+.dates{
+    width:100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.date{
+    width: 48%;
+    color:#fff;
+    background-color: #3d3e3e;
+    padding: 1rem 1rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border-radius: .5rem;
+    flex-direction: column;
+    border: 4px double #E75160;
+    text-align: center;
+}
+
+.iconP{
+    margin: 0 auto 1rem auto;
+    font-size: 4.5rem;
+
+}
+
+.iconk{
+    margin-right: 1rem;
+    color:#E75160;
+    font-size: 1.2rem;
+}
+
+
+i{
+    margin-right: 1rem;
+}

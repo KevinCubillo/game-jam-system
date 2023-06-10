@@ -24,6 +24,7 @@ export class SigninComponent implements OnInit {
         res => {
           console.log(res);
           localStorage.setItem('token', res.token);
+          localStorage.setItem('userId', res.user._id);
           localStorage.setItem('successMessage', 'Welcome, successful login.');
           this.router.navigate(['/private']);
         },
