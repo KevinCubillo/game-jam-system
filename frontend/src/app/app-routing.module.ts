@@ -10,6 +10,7 @@ import {JamsViewComponent} from './components/jams-view/jams-view.component';
 
 import { AuthGuard } from './auth.guard';
 import { FormJamComponent } from './components/form-jam/form-jam.component';
+import { FormSiteComponent } from './components/form-site/form-site.component';
 import { TableJamComponent } from './components/table-jam/table-jam.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
@@ -68,10 +69,16 @@ const routes: Routes = [
   {
     path: 'singlejam/:id',
     component: SingleJamViewComponent
+  },
+  {
+    path: 'create/site',
+    component: FormSiteComponent
+  },
+  {
+    path: 'update/site/:id',
+    component: FormSiteComponent
   }
   
-
-
 ];
 
 @NgModule({

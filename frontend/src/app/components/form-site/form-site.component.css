@@ -3,15 +3,15 @@
     color: aliceblue;
     width: 50%;
     margin: 10rem auto;
-}
-
-.btn {
+  }
+  
+  .btn {
     background-color: #E75160;
     color: white;
     font-weight: bold;
-}
-
-.title {
+  }
+  
+  .title {
     width: auto;
     text-align: center;
     margin: 0 auto;
@@ -22,10 +22,9 @@
     letter-spacing: 0.1em;
     color: aliceblue;
     margin-bottom: 1.5rem;
-}
-
-.subTittle
- {
+  }
+  
+  .subTittle {
     width: auto;
     text-align: left;
     margin: 0 auto;
@@ -36,11 +35,10 @@
     letter-spacing: 0.1em;
     color: aliceblue;
     margin-bottom: 1.5rem;
-}
-
-
-/* Checkboxs*/
-.switch {
+  }
+  
+  /* Checkboxs */
+  .switch {
     position: relative;
     display: inline-block;
     width: 50px;
@@ -97,17 +95,12 @@
     border-radius: 50%;
   }
   
-
   .checkbox {
     flex-wrap: wrap;
   }
-
-.categories{
-  width: 100%;
-}
-
-i{
-  margin-right: 1rem;
-  color:#E75160;
-  font-size: 1.2rem;
-}
+  
+  i {
+    margin-right: 1rem;
+    color: #E75160;
+    font-size: 1.2rem;
+  }

@@ -1,0 +1,70 @@
+<div class="form">
+  <label class="title">Create <span style="color:#E75160">Site</span></label>
+  <!-- {{ formSite.value | json }} -->
+  <form [formGroup]="formSite" (ngSubmit)="onSubmit()">
+    <!-- Global Organizer -->
+    <div class="form-group">
+      <label>Global Organizer:</label>
+      <input type="text" autocomplete="off" class="form-control" formControlName="globalOrganizer">
+    </div>
+
+    <!-- Country -->
+    <div class="form-group">
+      <label>Country:</label>
+      <input type="text" autocomplete="off" class="form-control" formControlName="country">
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label>City:</label>
+      <input type="text" autocomplete="off" class="form-control" formControlName="city">
+    </div>
+
+    <!-- Judges -->
+    <div formArrayName="judges" class="checkbox mt-4">
+      <label class="subTittle">Judges:</label>
+      <div *ngFor="let judge of judges.controls; let i = index" class="mb-3">
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeJudge(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addJudge()">Add Judge</button>
+    </div>
+
+    <!-- Local Organizers -->
+    <div formArrayName="localOrganizers" class="checkbox mt-4">
+      <label class="subTittle">Local Organizers:</label>
+      <div *ngFor="let organizer of localOrganizers.controls; let i = index" class="mb-3">
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeLocalOrganizer(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addLocalOrganizer()">Add Local Organizer</button>
+    </div>
+
+    <!-- Mentors -->
+    <div formArrayName="mentors" class="checkbox mt-4">
+      <label class="subTittle">Mentors:</label>
+      <div *ngFor="let mentor of mentors.controls; let i = index" class="mb-3">
+        <div [formGroupName]="i">
+          <div class="form-group">
+            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removeMentor(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addMentor()">Add Mentor</button>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-default" style="margin-left: 92%;" [disabled]="formSite.invalid">Submit</button>
+  </form>
+</div>
+ 
+

@@ -22,6 +22,7 @@ import { TableJamComponent } from './components/table-jam/table-jam.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FormSiteComponent } from './components/form-site/form-site.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     TableJamComponent,
     UpdateFormComponent,
     SingleJamViewComponent,
-    ProfileComponent
+    ProfileComponent,
+    FormSiteComponent
 
   ],
   imports: [

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: User = { email: '', password: '', nombre: '', lastname: '', role: '' };
+  user: User = { email: '', password: '', nombre: '', lastname: '', role: ['USER'] };
 
 
   successMessage: string = '';
@@ -54,4 +54,3 @@ export class SignupComponent implements OnInit {
     return re.test(String(email).toLowerCase());
   }
 }
-
