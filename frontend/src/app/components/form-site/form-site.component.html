@@ -1,70 +1,61 @@
 <div class="form">
-  <label class="title">Create <span style="color:#E75160">Site</span></label>
-  <!-- {{ formSite.value | json }} -->
-  <form [formGroup]="formSite" (ngSubmit)="onSubmit()">
-    <!-- Global Organizer -->
+
+  <form (ngSubmit)="submitForm()" class="form">
+    <label class="title"  style="margin-bottom: 20%" >Create <span style="color:#E75160">Site</span></label>
     <div class="form-group">
-      <label>Global Organizer:</label>
-      <input type="text" autocomplete="off" class="form-control" formControlName="globalOrganizer">
+      <label for="globalOrganizer" class="subTittle">Global Organizer:</label>
+
+      <input type="text" autocomplete="off" class="form-control" id="globalOrganizer" [(ngModel)]="site.globalOrganizer" name="globalOrganizer" required>
     </div>
 
-    <!-- Country -->
     <div class="form-group">
-      <label>Country:</label>
-      <input type="text" autocomplete="off" class="form-control" formControlName="country">
+      <label for="country" class="subTittle">Country:</label>
+      <input type="text" autocomplete="off" class="form-control" id="country" [(ngModel)]="site.country" name="country" required>
     </div>
 
-    <!-- City -->
     <div class="form-group">
-      <label>City:</label>
-      <input type="text" autocomplete="off" class="form-control" formControlName="city">
+      <label for="city" class="subTittle">City:</label>
+      <input type="text" autocomplete="off" class="form-control" id="city" [(ngModel)]="site.city" name="city" required>
     </div>
 
-    <!-- Judges -->
-    <div formArrayName="judges" class="checkbox mt-4">
-      <label class="subTittle">Judges:</label>
-      <div *ngFor="let judge of judges.controls; let i = index" class="mb-3">
-        <div [formGroupName]="i">
-          <div class="form-group">
-            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
-          </div>
-          <button type="button" class="btn btn-danger btn-sm" (click)="removeJudge(i)">Remove</button>
-        </div>
-      </div>
+    <div class="form-group">
+      <label for="judges" class="subTittle">Judges:</label>
+      <input type="text" class="form-control" autocomplete="off" class="form-control" id="judges" [(ngModel)]="judgeInput" name="judges" required>
       <button type="button" class="btn btn-primary" (click)="addJudge()">Add Judge</button>
+      <ul>
+        <li *ngFor="let judge of site.judges">
+          {{ judge }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeJudge(judge)">Remove</button>
+        </li>
+      </ul>
     </div>
 
-    <!-- Local Organizers -->
-    <div formArrayName="localOrganizers" class="checkbox mt-4">
-      <label class="subTittle">Local Organizers:</label>
-      <div *ngFor="let organizer of localOrganizers.controls; let i = index" class="mb-3">
-        <div [formGroupName]="i">
-          <div class="form-group">
-            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
-          </div>
-          <button type="button" class="btn btn-danger btn-sm" (click)="removeLocalOrganizer(i)">Remove</button>
-        </div>
-      </div>
+    <div class="form-group">
+      <label for="localOrganizers" class="subTittle">Local Organizers:</label>
+      <input type="text" autocomplete="off" class="form-control" id="localOrganizers" [(ngModel)]="localOrganizerInput" name="localOrganizers" required>
       <button type="button" class="btn btn-primary" (click)="addLocalOrganizer()">Add Local Organizer</button>
+      <ul>
+        <li *ngFor="let localOrganizer of site.localOrganizers">
+          {{ localOrganizer }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeLocalOrganizer(localOrganizer)">Remove</button>
+        </li>
+      </ul>
     </div>
 
-    <!-- Mentors -->
-    <div formArrayName="mentors" class="checkbox mt-4">
-      <label class="subTittle">Mentors:</label>
-      <div *ngFor="let mentor of mentors.controls; let i = index" class="mb-3">
-        <div [formGroupName]="i">
-          <div class="form-group">
-            <input type="text" autocomplete="off" class="form-control" formControlName="{{i}}">
-          </div>
-          <button type="button" class="btn btn-danger btn-sm" (click)="removeMentor(i)">Remove</button>
-        </div>
-      </div>
+    <div class="form-group">
+      <label for="mentors" class="subTittle">Mentors:</label>
+      <input type="text" autocomplete="off" class="form-control" id="mentors" [(ngModel)]="mentorInput" name="mentors" required>
       <button type="button" class="btn btn-primary" (click)="addMentor()">Add Mentor</button>
+      <ul>
+        <li *ngFor="let mentor of site.mentors">
+          {{ mentor }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%" (click)="removeMentor(mentor)">Remove</button>
+        </li>
+      </ul>
     </div>
 
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-default" style="margin-left: 92%;" [disabled]="formSite.invalid">Submit</button>
+    <button type="submit" class="btn btn-default" style="margin-left: 80%;">Submit</button>
+
   </form>
 </div>
- 
 

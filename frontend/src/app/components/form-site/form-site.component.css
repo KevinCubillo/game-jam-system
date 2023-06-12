@@ -2,13 +2,14 @@
     padding: 2rem;
     color: aliceblue;
     width: 50%;
-    margin: 10rem auto;
+    margin: 4rem auto;
   }
   
   .btn {
     background-color: #E75160;
     color: white;
     font-weight: bold;
+    margin: 1rem auto;
   }
   
   .title {
@@ -29,22 +30,13 @@
     text-align: left;
     margin: 0 auto;
     display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 1rem;
     letter-spacing: 0.1em;
     color: aliceblue;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   
-  /* Checkboxs */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 25px;
-  }
-  
+
   .switch input {
     display: none;
   }
