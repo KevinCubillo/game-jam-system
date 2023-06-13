@@ -13,6 +13,7 @@ import { SiteService } from 'src/app/services/site.service';
 export class SingleJamViewComponent implements OnInit {
   jam!: Jam;
   sites: Site[] = [];
+  jamId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +25,12 @@ export class SingleJamViewComponent implements OnInit {
   ngOnInit() {
     const jamId: string | null = this.route.snapshot.paramMap.get('id');
     if (jamId) {
+      this.jamId = jamId;
       this.jamService.getJamById(jamId).subscribe(
         (data: any) => {
           this.jam = data;
           console.log('sites', this.jam.sites);
+          console.log('jam', this.jam);
 
           // Obtener los objetos Site utilizando los IDs de los sitios
           this.getAndSetSites(this.jam.sites);
@@ -51,4 +54,9 @@ export class SingleJamViewComponent implements OnInit {
       );
     }
   }
+
+  addSite() {
+    this.router.navigate(['/create/site/', this.jamId]);
+  }
+
 }

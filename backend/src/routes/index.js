@@ -7,6 +7,7 @@ const Jam = require('../models/Jam');
 const Site = require('../models/Site');
 const createUser = require('../models/UserFactory');
 const Observer = require('../models/EventMangager');
+const { add } = require('../models/Notification');
 const notificationObserver = new Observer();
 
 
@@ -256,6 +257,21 @@ router.delete('/jams/:id', async (req, res) => {
     }
   });
 
+  addSiteToJam = async (jamId, siteId) => {
+    try {
+      const jam = await Jam.findById(jamId);
+      if (!jam) {
+        return res.status(404).json({ message: 'Jam not found' });
+      }
+      jam.sites.push(siteId);
+      await jam.save();
+      return jam;
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };
+
 
 //--------------------------------------------
 // Routes del Site
@@ -295,8 +311,8 @@ router.post('/sites', async (req, res) => {
         notificationType: 'NEW_SITE',
         notificationText: `A new Site has been created: ${site.theme}`
     };
+    addSiteToJam(site.jamId, savedSite._id);
     notificationObserver.notify(notificationData);
-
     res.status(201).json(savedSite);
   } catch (err) {
     console.error(err);
@@ -340,6 +356,8 @@ router.delete('/sites/:id', async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
 });
+
+
 
 
 module.exports.router = router;

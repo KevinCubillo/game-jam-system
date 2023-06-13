@@ -5,9 +5,17 @@
       <h3 class="jam-name">{{ jam.name }}</h3>
       <img src="assets/images/Banner.jpg" alt="">
       <h3 class="jam-sites">Sites</h3>
+      <!-- Add Category button -->
+      <div class="form-group">
+        <button type="button" class="btn btn-primary btn-site" (click)="addSite()">Add Site</button>
+      </div>
+
       <div class="sites">
         <div class="site" *ngFor="let site of sites">
+          <div class="nameSite">
           <i class="fa-solid fa-map-location-dot"></i> {{ site.country }} - {{ site.city }}
+          </div>
+          <a class="trash"><i class="fa-regular fa-trash-can"></i></a>
         </div>
       </div>
     </div>

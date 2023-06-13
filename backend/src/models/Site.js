@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const User = require('./User');
-
 
 const siteSchema = new mongoose.Schema({
     country: {
@@ -10,9 +8,9 @@ const siteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    globalOrganizer: {
+    jamId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Jam',
         required: true
     },
     localOrganizers: [{

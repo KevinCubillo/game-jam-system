@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Site } from '../../models/Site';
 import { SiteService } from '../../services/site.service';
@@ -9,10 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './form-site.component.html',
   styleUrls: ['./form-site.component.css'],
 })
-export class FormSiteComponent {
+export class FormSiteComponent implements OnInit{
   site: Site = {
     _id: '',
-    globalOrganizer: '',
+    jamId: '',
     country: '',
     city: '',
     judges: [],
@@ -23,7 +23,14 @@ export class FormSiteComponent {
   localOrganizerInput: string = '';
   mentorInput: string = '';
 
-  constructor(private siteService: SiteService) {}
+  constructor(private siteService: SiteService, private activeRoute: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    const jamId: string | null = this.activeRoute.snapshot.paramMap.get('id');
+    if (jamId) {
+      this.site.jamId = jamId;
+    }
+  }
 
   addJudge() {
     if (this.judgeInput.trim() !== '') {
@@ -70,6 +77,8 @@ export class FormSiteComponent {
         console.error('Error creating site:', error);
       }
     );
+
+    this.router.navigate(['/singlejam', this.site.jamId]);
   }
   
   

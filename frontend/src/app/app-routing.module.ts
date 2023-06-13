@@ -72,7 +72,7 @@ const routes: Routes = [
     component: SingleJamViewComponent
   },
   {
-    path: 'create/site',
+    path: 'create/site/:id',
     component: FormSiteComponent
   },
   {

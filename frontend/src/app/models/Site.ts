@@ -1,6 +1,6 @@
 export interface Site {
     _id: string;
-    globalOrganizer: string;
+    jamId: string;
     country: string;
     city: string;
     judges: string[];
