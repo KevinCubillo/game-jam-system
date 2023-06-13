@@ -3,15 +3,24 @@ import { AuthService } from '../../services/auth.service';
 import { User } from 'src/app/models/user.interface';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  animations: [
+    trigger('slideUp', [
+      state('in', style({ transform: 'translateY(0)', opacity: 1 })),
+      state('out', style({ transform: 'translateY(-100%)', opacity: 0 })),
+      transition('in => out', animate('300ms ease-in')),
+      transition('void => *', animate(0)),
+    ]),
+  ]
 })
 export class ProfileComponent implements OnInit {
   userForm: FormGroup;
-
+  showUpdateMessage = false;
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
@@ -55,7 +64,11 @@ export class ProfileComponent implements OnInit {
     user.role = user.role.flat(); 
     this.authService.updateUser(user)
       .subscribe(
-        () => console.log('User updated successfully'),
+        () => {
+          console.log('User updated successfully');
+          this.showUpdateMessage = true; 
+          setTimeout(() => this.showUpdateMessage = false, 3000); 
+        },
         error => console.error('Error updating user', error)
       );
   }

@@ -59,4 +59,8 @@ export class SingleJamViewComponent implements OnInit {
     this.router.navigate(['/create/site/', this.jamId]);
   }
 
+  deleteSite(siteId: string) {
+    console.log('Deleting site', siteId);
+    this.siteService.deleteSite(siteId);
+  }
 }

@@ -12,9 +12,12 @@
               <input type="text" class="form-control" formControlName="email" readonly>
             </div>
             <div class="col-md-12">
-              <label class="labels">Role</label>
-              <input type="text" class="form-control" formControlName="role" readonly>
+              <label class="labels">Roles</label>
+              <ul>
+                <li *ngFor="let r of userForm.get('role')?.value">{{ r }}</li>
+              </ul>
             </div>
+            
             <div class="col-md-6">
               <label class="labels">Name</label>
               <input type="text" class="form-control" formControlName="nombre">
@@ -76,9 +79,11 @@
           <div class="mt-5 text-center">
             <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
           </div>
+          <div *ngIf="showUpdateMessage" class="success-message" [@slideUp]='showUpdateMessage ? "in" : "out"'>
+            User updated successfully
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
