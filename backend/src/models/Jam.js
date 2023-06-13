@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 // Esquema de la coleccion Jams
 const jamSchema = new mongoose.Schema({
   categories: {
@@ -22,7 +23,14 @@ const jamSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  experiences: [String]
+  experiences: [String],
+  sites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Site'
+    }
+  ]
+
 });
 
 

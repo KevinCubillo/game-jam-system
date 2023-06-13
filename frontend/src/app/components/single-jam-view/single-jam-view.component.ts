@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Jam } from 'src/app/models/Jam';
 import { JamService } from 'src/app/services/jam.service';
+import { Site } from 'src/app/models/Site';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-single-jam-view',
@@ -9,24 +11,42 @@ import { JamService } from 'src/app/services/jam.service';
   styleUrls: ['./single-jam-view.component.css']
 })
 export class SingleJamViewComponent implements OnInit {
-  jam!: Jam; // Se inicializa con un valor por defecto para evitar errores de asignación
+  jam!: Jam;
+  sites: Site[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private jamService: JamService,
+    private siteService: SiteService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    const jamId: string | null = this.route.snapshot.paramMap.get('id'); // Obtener el ID de la jam de los parámetros de la ruta
+    const jamId: string | null = this.route.snapshot.paramMap.get('id');
     if (jamId) {
       this.jamService.getJamById(jamId).subscribe(
-        (data: Object) => {
-          this.jam = data as Jam; // Realizar un casting explícito a tipo Jam
+        (data: any) => {
+          this.jam = data;
+          console.log('sites', this.jam.sites);
+
+          // Obtener los objetos Site utilizando los IDs de los sitios
+          this.getAndSetSites(this.jam.sites);
         },
         (error: any) => {
           console.error('Error al obtener los detalles de la jam:', error);
-          // Manejar el error de acuerdo a tus necesidades (redireccionar, mostrar un mensaje de error, etc.)
+        }
+      );
+    }
+  }
+
+  getAndSetSites(siteIds: string[]) {
+    for (const siteId of siteIds) {
+      this.siteService.getSiteById(siteId).subscribe(
+        (site: any) => {
+          this.sites.push(site);
+        },
+        (error: any) => {
+          console.error('Error al obtener el sitio:', error);
         }
       );
     }

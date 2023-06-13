@@ -1,3 +1,4 @@
+import { Site } from './Site';
 export interface Jam {
   _id: string;
   categories: string[][];
@@ -6,4 +7,5 @@ export interface Jam {
   startDate: string;
   theme: string;
   experiences: string[];
+  sites: string[]; 
 }

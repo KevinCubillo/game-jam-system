@@ -16,7 +16,8 @@ export class SiteService {
     public getSite() {
       return this.http.get(this.url + "sites");
     }
-  
+
+
     public getSiteById(id: string) {
       return this.http.get(this.url + "sites/" + id);
     }
