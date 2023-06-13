@@ -16,6 +16,7 @@ import { UpdateFormComponent } from './components/update-form/update-form.compon
 import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
+import { AssignMentorTableComponent } from './components/assign-mentor-table/assign-mentor-table.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path: 'update/site/:id',
     component: FormSiteComponent
+  },
+  {
+    path: 'assign/mentor',
+    component: AssignMentorTableComponent
   }
   
 ];

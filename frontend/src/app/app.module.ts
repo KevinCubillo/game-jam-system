@@ -23,6 +23,7 @@ import { UpdateFormComponent } from './components/update-form/update-form.compon
 import { SingleJamViewComponent } from './components/single-jam-view/single-jam-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormSiteComponent } from './components/form-site/form-site.component';
+import { AssignMentorTableComponent } from './components/assign-mentor-table/assign-mentor-table.component';
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { FormSiteComponent } from './components/form-site/form-site.component';
     FormJamComponent,
     TableJamComponent,
     UpdateFormComponent,
+    ProfileComponent,
+    AssignMentorTableComponent,
     SingleJamViewComponent,
     ProfileComponent,
     FormSiteComponent

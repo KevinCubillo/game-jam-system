@@ -1,0 +1,29 @@
+<div class="tables">
+    <label class="title">Admin Mentor</label>
+    <div class="input-group mb-3 searchButton">
+      <input type="text" class="form-control" placeholder="Buscar...">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button">Buscar</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mentor of mentors">
+          <td>{{mentor.name}}</td>
+          <td>{{mentor.email}}</td>
+          <td class="actions">
+            <button type="button" class="btn btn-warning btn-sm">Assign mentor</button>
+            <!-- Agrega más filas con botones de acción aquí -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
