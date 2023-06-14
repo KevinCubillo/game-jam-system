@@ -32,7 +32,6 @@
 .actions{
     display: flex;
     justify-content: flex-end;
-    max-width: auto;
 }
 
 .actions button {

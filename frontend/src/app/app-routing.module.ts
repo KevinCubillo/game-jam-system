@@ -80,7 +80,7 @@ const routes: Routes = [
     component: FormSiteComponent
   },
   {
-    path: 'assign/mentor',
+    path: 'assign/role/:id',
     component: AssignMentorTableComponent
   }
   

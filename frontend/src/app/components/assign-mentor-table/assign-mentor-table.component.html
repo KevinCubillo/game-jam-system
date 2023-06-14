@@ -1,5 +1,5 @@
 <div class="tables">
-    <label class="title">Admin Mentor</label>
+    <label class="title">Admin Jam Role</label>
     <div class="input-group mb-3 searchButton">
       <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchText">
       <div class="input-group-append">
@@ -9,8 +9,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
+          <th style="width: 30%;" scope="col">Name</th>
+          <th style="width: 30%;" scope="col">Email</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -19,7 +19,9 @@
           <td>{{user.nombre}}</td>
           <td>{{user.email}}</td>
           <td class="actions">
-            <button type="button" class="btn btn-warning btn-sm" (click)="asingMentorRole(user._id)">Assign user</button>
+            <button type="button" class="btn btn-warning btn-sm" (click)="asingRole(user._id, 'MENTOR')">Assign Mentor</button>
+            <button type="button" class="btn btn-warning btn-sm" (click)="asingRole(user._id, 'JUDGE')">Assign Jugde</button>
+            <button type="button" class="btn btn-warning btn-sm" (click)="asingRole(user._id, 'LOCALORGANIZER')">Assign LocalOrganizer</button>
             <!-- Agrega más filas con botones de acción aquí -->
           </td>
         </tr>

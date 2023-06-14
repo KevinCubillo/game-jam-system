@@ -12,11 +12,19 @@ export class AssignMentorTableComponent implements OnInit{
   searchText: string = "";
   siteId: string = "";
 
+  filterByRoles() {
+    this.users = this.users.filter((user: any) => {
+      return !user.role.includes("MENTOR") && !user.role.includes("JUDGE") && !user.role.includes("LOCALORGANIZER");
+    });
+  }
+  
+
   ngOnInit(): void {
     const siteId: string | null = this.actibeRute.snapshot.paramMap.get('id');
     this.userService.getAllUsers().subscribe(
       res => {
-        this.users = res.filter((user: any) => !user.role.includes('MENTOR'|| 'ADMIN'|| 'JUDGE'|| 'LOCAL_ORGANIZER'));
+        this.users = res;
+        this.filterByRoles();
       },
       err => console.log(err)
     )
@@ -29,13 +37,15 @@ export class AssignMentorTableComponent implements OnInit{
     this.users = this.users.filter((user: any) => user.nombre === this.searchText || user.email === this.searchText);
   }
 
-  asingMentorRole(id: string)  {
-    this.userService.updateRole(id, 'MENTOR').subscribe(
+  asingRole(id: string,role: string)  {
+    this.userService.updateRole(id, role).subscribe(
       res => {
         console.log(res);
       }
     )
-    this.users = this.users.filter((user: any) => !user.role.includes('MENTOR'|| 'ADMIN'|| 'JUDGE'|| 'LOCAL_ORGANIZER'));
+    this.filterByRoles();
     location.reload();
     }
+
+  
 }
