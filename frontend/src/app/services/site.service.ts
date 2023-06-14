@@ -11,10 +11,11 @@ export class SiteService {
 
     private url: string = "http://localhost:3000/";
     
-    public createSite(site: any) {
-      return this.http.post(this.url + "sites", site);
+
+    public createSite(site: any): Observable<{ user: User }> {
+      return this.http.post<{ user: User }>(this.url + "sites", site);
     }
-  
+    
     public getSite() {
       return this.http.get(this.url + "sites");
     }

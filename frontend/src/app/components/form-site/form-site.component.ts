@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Site } from '../../models/Site';
 import { SiteService } from '../../services/site.service';
@@ -49,9 +49,39 @@ export class FormSiteComponent implements OnInit{
   }
 
   
-  addPerson() {
-    this.router.navigate(['/assign/role/', this.site._id]);
+addPerson(){
+  let url: string = '/assign/role';
+   if(this.site._id === '') {
+      const { _id, ...newSite } = this.site; 
+       this.siteService.createSite(newSite).subscribe(
+        (response: any) => {
+          this.site = response;
+          console.log('Site created:', response);
+          url = url + '/' + this.site._id;
+          window.open(url);
+        },
+        (error) => {
+          // Handle the error if it occurs
+          console.error('Error creating site:', error);
+        }
+      );
+    }else{
+       this.siteService.updateSite(this.site._id, this.site).subscribe(
+        (response: any) => {
+           this.site = response;
+          // Handle the response from the service if needed
+          console.log('Site updated:', response);
+          url = url + '/' + this.site._id;
+          window.open(url);
+        },
+        (error) => {
+          // Handle the error if it occurs
+          console.error('Error updating site:', error);
+        }
+      );
+    } 
   }
+
 
   removeJudge(judgeId: string) {
     this.site.judges = this.site.judges.filter(judge => judge._id !== judgeId);
@@ -66,19 +96,31 @@ export class FormSiteComponent implements OnInit{
   }
   
   async submitForm() {
-    const { _id, ...newSite } = this.site; // Destructure and exclude _id field
-    await this.siteService.createSite(newSite).subscribe(
-      (response) => {
-        // Handle the response from the service if needed
-        console.log('Site created:', response);
-      },
-      (error) => {
-        // Handle the error if it occurs
-        console.error('Error creating site:', error);
-      }
-    );
-    this.router.navigate(['/singlejam', this.site.jamId]);
-  }
-  
-  
+    if(this.site._id === '') {
+      const { _id, ...newSite } = this.site; 
+      await this.siteService.createSite(newSite).subscribe(
+        (response) => {
+          // Handle the response from the service if needed
+          console.log('Site created:', response);
+        },
+        (error) => {
+          // Handle the error if it occurs
+          console.error('Error creating site:', error);
+        }
+      );
+   }
+   else {
+      await this.siteService.updateSite(this.site._id, this.site).subscribe(
+        (response) => {
+          // Handle the response from the service if needed
+          console.log('Site updated:', response);
+        },
+        (error) => {
+          // Handle the error if it occurs
+          console.error('Error updating site:', error);
+        }
+      );
+   } 
+   this.router.navigate(['/singlejam', this.site.jamId]);
+ }
 }
