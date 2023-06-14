@@ -12,39 +12,32 @@
       <label for="city" class="subTittle">City:</label>
       <input type="text" autocomplete="off" class="form-control" id="city" [(ngModel)]="site.city" name="city" required>
     </div>
-
+    <button type="button" class="btn btn-primary btn-" (click)="addPerson()">Add Person</button>
     <div class="form-group">
       <label for="judges" class="subTittle">Judges:</label>
-      <input type="text" class="form-control" autocomplete="off" class="form-control" id="judges" [(ngModel)]="judgeInput" name="judges" required>
-      <button type="button" class="btn btn-primary" (click)="addJudge()">Add Judge</button>
       <ul>
         <li *ngFor="let judge of site.judges">
-          {{ judge }}
-          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeJudge(judge)">Remove</button>
+          {{ judge.nombre }} {{judge.lastname }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeJudge(judge._id)">Remove</button>
         </li>
       </ul>
     </div>
 
     <div class="form-group">
       <label for="localOrganizers" class="subTittle">Local Organizers:</label>
-      <input type="text" autocomplete="off" class="form-control" id="localOrganizers" [(ngModel)]="localOrganizerInput" name="localOrganizers" required>
-      <button type="button" class="btn btn-primary" (click)="addLocalOrganizer()">Add Local Organizer</button>
       <ul>
         <li *ngFor="let localOrganizer of site.localOrganizers">
-          {{ localOrganizer }}
-          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeLocalOrganizer(localOrganizer)">Remove</button>
-        </li>
+          {{ localOrganizer.nombre }} {{localOrganizer.lastname }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeLocalOrganizer(localOrganizer._id)">Remove</button>
       </ul>
     </div>
 
     <div class="form-group">
       <label for="mentors" class="subTittle">Mentors:</label>
-      <input type="text" autocomplete="off" class="form-control" id="mentors" [(ngModel)]="mentorInput" name="mentors" required>
-      <button type="button" class="btn btn-primary" (click)="addMentor()">Add Mentor</button>
       <ul>
         <li *ngFor="let mentor of site.mentors">
-          {{ mentor }}
-          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%" (click)="removeMentor(mentor)">Remove</button>
+          {{ mentor.nombre }} {{mentor.lastname }}
+          <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5%"  (click)="removeMentor(mentor._id)">Remove</button>
         </li>
       </ul>
     </div>

@@ -341,6 +341,7 @@ router.put('/sites/:id', async (req, res) => {
 }
 });
 
+// Ruta para eliminar un Site existente por su ID
 router.delete('/sites/:id', async (req, res) => {
   const id = req.params.id;
   try {
@@ -376,6 +377,17 @@ router.delete('/sites/:id', async (req, res) => {
   }
 });
 
+//Ruta para obtener todos los Users que participoen a un site y tengan un rol especifico
+router.post('/sites/:id/users', async (req, res, next) => {
+  try {
+    const site = await Site.findById(req.params.id);
+    const { role } = req.body;
+    const users = await User.find({ _id: { $in: site.users }, role: role });
+    res.json(users);
+  } catch (error) {
+    next(error);
+  }
+});
 
 
 module.exports.router = router;

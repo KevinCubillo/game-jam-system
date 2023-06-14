@@ -3,6 +3,7 @@ import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Site } from '../../models/Site';
 import { SiteService } from '../../services/site.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-form-site',
@@ -19,52 +20,50 @@ export class FormSiteComponent implements OnInit{
     localOrganizers: [],
     mentors: []
   };
+  constructor( private siteService: SiteService,
+    private activeRoute: ActivatedRoute,
+    private router: Router) {}
+
   judgeInput: string = '';
   localOrganizerInput: string = '';
   mentorInput: string = '';
-
-  constructor(private siteService: SiteService, private activeRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     const jamId: string | null = this.activeRoute.snapshot.paramMap.get('id');
     if (jamId) {
       this.site.jamId = jamId;
+      this.siteService.getUsersByRoleAndSite(this.site._id, ['MENTOR', 'JUDGE', 'LOCALORGANIZER']).subscribe(
+        (users: User[]) => {
+          // Asignar usuarios a los arreglos correspondientes según su rol
+          this.site.mentors = users.filter(user => user.roles.includes('MENTOR'));
+          this.site.judges = users.filter(user => user.roles.includes('JUDGE'));
+          this.site.localOrganizers = users.filter(user => user.roles.includes('LOCALORGANIZER'));
+        },
+        (error: any) => {
+          // Manejar cualquier error en la solicitud
+          console.error('Error al obtener los usuarios:', error);
+        }
+      );
     }
   }
 
-  addJudge() {
-    if (this.judgeInput.trim() !== '') {
-      this.site.judges.push(this.judgeInput.trim());
-      this.judgeInput = '';
-    }
+  
+  addPerson() {
+    this.router.navigate(['/assign/role/', this.site._id]);
   }
 
-  addLocalOrganizer() {
-    if (this.localOrganizerInput.trim() !== '') {
-      this.site.localOrganizers.push(this.localOrganizerInput.trim());
-      this.localOrganizerInput = '';
-    }
+  removeJudge(judgeId: string) {
+    this.site.judges = this.site.judges.filter(judge => judge._id !== judgeId);
   }
 
-  addMentor() {
-    if (this.mentorInput.trim() !== '') {
-      this.site.mentors.push(this.mentorInput.trim());
-      this.mentorInput = '';
-    }
+  removeLocalOrganizer(localOrganizerId: string) {
+    this.site.localOrganizers = this.site.localOrganizers.filter(localOrganizer => localOrganizer._id !== localOrganizerId);
   }
 
-  removeJudge(judge: string) {
-    this.site.judges = this.site.judges.filter(j => j !== judge);
+  removeMentor(mentorId: string) {
+    this.site.mentors = this.site.mentors.filter(mentor => mentor._id !== mentorId);
   }
-
-  removeLocalOrganizer(localOrganizer: string) {
-    this.site.localOrganizers = this.site.localOrganizers.filter(lo => lo !== localOrganizer);
-  }
-
-  removeMentor(mentor: string) {
-    this.site.mentors = this.site.mentors.filter(m => m !== mentor);
-  }
-
+  
   async submitForm() {
     const { _id, ...newSite } = this.site; // Destructure and exclude _id field
     await this.siteService.createSite(newSite).subscribe(

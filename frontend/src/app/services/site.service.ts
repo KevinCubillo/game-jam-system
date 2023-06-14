@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,11 @@ export class SiteService {
       return this.http.delete(this.url + "sites/" + id);
       
     }
-    
 
+    public getUsersByRoleAndSite(siteId: string, roles: string[]): Observable<User[]> {
+      const url = `${this.url}sites/${siteId}/users`;
+      return this.http.post<User[]>(url, roles);
+    }
+   
   }
   

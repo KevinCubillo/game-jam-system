@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  user: User = { email: '', password: '', nombre: '', lastname: '', role: ['USER'] };
+  user: User = {_id:'', email: '', password: '', nombre: '', lastname: '', roles: ['USER'], sites: [] };
 
 
   successMessage: string = '';

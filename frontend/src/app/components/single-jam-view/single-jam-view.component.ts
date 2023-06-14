@@ -29,8 +29,6 @@ export class SingleJamViewComponent implements OnInit {
       this.jamService.getJamById(jamId).subscribe(
         (data: any) => {
           this.jam = data;
-          console.log('sites', this.jam.sites);
-          console.log('jam', this.jam);
            // Obtener los objetos Site utilizando los IDs de los sitios
           this.getAndSetSites(this.jam.sites);
           
