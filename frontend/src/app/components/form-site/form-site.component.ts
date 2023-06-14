@@ -65,9 +65,9 @@ export class FormSiteComponent implements OnInit{
     this.site.mentors = this.site.mentors.filter(m => m !== mentor);
   }
 
-  submitForm() {
+  async submitForm() {
     const { _id, ...newSite } = this.site; // Destructure and exclude _id field
-    this.siteService.createSite(newSite).subscribe(
+    await this.siteService.createSite(newSite).subscribe(
       (response) => {
         // Handle the response from the service if needed
         console.log('Site created:', response);
@@ -77,7 +77,6 @@ export class FormSiteComponent implements OnInit{
         console.error('Error creating site:', error);
       }
     );
-
     this.router.navigate(['/singlejam', this.site.jamId]);
   }
   
