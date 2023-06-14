@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './form-site.component.html',
   styleUrls: ['./form-site.component.css'],
 })
+
 export class FormSiteComponent implements OnInit{
   site: Site = {
     _id: '',
@@ -19,6 +20,7 @@ export class FormSiteComponent implements OnInit{
     localOrganizers: [],
     mentors: []
   };
+
   judgeInput: string = '';
   localOrganizerInput: string = '';
   mentorInput: string = '';

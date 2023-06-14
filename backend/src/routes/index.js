@@ -8,6 +8,7 @@ const Site = require('../models/Site');
 const createUser = require('../models/UserFactory');
 const Observer = require('../models/EventMangager');
 const { add } = require('../models/Notification');
+const { use } = require('moongose/routes');
 const notificationObserver = new Observer();
 
 
@@ -162,6 +163,29 @@ try {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
 }
+});
+
+router.get('/users', async (req, res) => {
+  try {
+      const users = await User.find();
+      res.json(users);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+});
+
+router.put('/users/:userId/role', async (req, res) => {
+  userId = req.params.userId;
+  role = req.body.role;
+  //siteId = req.body.siteId;
+  const user = await User.findById(userId);
+  if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+  }
+  user.role.push(role);
+  //user.sites.push(siteId);
+  await user.save();
+  res.json(user);
 });
 
 

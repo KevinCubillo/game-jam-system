@@ -57,6 +57,14 @@ export class AuthService {
     const userId = localStorage.getItem('userId')
     return this.http.put<User>(`${this.URL}/users/${userId}`, user);
   }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.URL}/users`);
+  }
+
+  updateRole(userId: string, role: string): Observable<User> {
+    return this.http.put<User>(`${this.URL}/users/${userId}/role`, { role });
+  }
   
 
 }

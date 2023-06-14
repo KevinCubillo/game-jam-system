@@ -1,9 +1,9 @@
 <div class="tables">
     <label class="title">Admin Mentor</label>
     <div class="input-group mb-3 searchButton">
-      <input type="text" class="form-control" placeholder="Buscar...">
+      <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchText">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button">Buscar</button>
+        <button class="btn btn-primary" type="button" (click)="searchUser()">Buscar</button>
       </div>
     </div>
     <table class="table">
@@ -15,11 +15,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let mentor of mentors">
-          <td>{{mentor.name}}</td>
-          <td>{{mentor.email}}</td>
+        <tr *ngFor="let user of users">
+          <td>{{user.nombre}}</td>
+          <td>{{user.email}}</td>
           <td class="actions">
-            <button type="button" class="btn btn-warning btn-sm">Assign mentor</button>
+            <button type="button" class="btn btn-warning btn-sm" (click)="asingMentorRole(user._id)">Assign user</button>
             <!-- Agrega más filas con botones de acción aquí -->
           </td>
         </tr>
