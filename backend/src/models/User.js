@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const notificationSchema = require('./Notification');
 
 let validatedRols = {
-    values: ['ADMIN', 'USER'],
+    values: ['ADMIN', 'USER', 'MENTOR', 'JUDGE', 'LOCALORGANIZER'],
     message: '{VALUE} is not a valid role'
 }
 

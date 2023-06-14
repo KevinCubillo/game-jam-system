@@ -1,21 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-assign-mentor-table',
   templateUrl: './assign-mentor-table.component.html',
   styleUrls: ['./assign-mentor-table.component.css']
 })
-export class AssignMentorTableComponent {
+export class AssignMentorTableComponent implements OnInit{
+  users: any = [];
+  searchText: string = "";
+  siteId: string = "";
 
-  constructor() { }
-  public mentors = [
-    {
-      _id: '1',
-      name: 'Mentor 1',
-      email: 'tesr@gmail.com',
-      phone: '1234567890',
-      skills: 'skill1, skill2, skill3'
+  filterByRoles() {
+    this.users = this.users.filter((user: any) => {
+      return !user.role.includes("MENTOR") && !user.role.includes("JUDGE") && !user.role.includes("LOCALORGANIZER");
+    });
+  }
+  
+
+  ngOnInit(): void {
+    const siteId: string | null = this.actibeRute.snapshot.paramMap.get('id');
+    this.userService.getAllUsers().subscribe(
+      res => {
+        this.users = res;
+        this.filterByRoles();
+      },
+      err => console.log(err)
+    )
+    console.log(this.users);
+  }
+  constructor(private userService: AuthService, private actibeRute: ActivatedRoute) { }
+
+  searchUser() {
+    console.log(this.searchText);
+    this.users = this.users.filter((user: any) => user.nombre === this.searchText || user.email === this.searchText);
+  }
+
+  asingRole(id: string,role: string)  {
+    this.userService.updateRole(id, role).subscribe(
+      res => {
+        console.log(res);
+      }
+    )
+    this.filterByRoles();
+    location.reload();
     }
-  ]
 
+  
 }
