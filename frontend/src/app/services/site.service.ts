@@ -30,7 +30,9 @@ export class SiteService {
   
     public deleteSite(id: string) {
       return this.http.delete(this.url + "sites/" + id);
+      
     }
-  
+    
+
   }
   

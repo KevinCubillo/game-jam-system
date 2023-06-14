@@ -19,10 +19,10 @@ export class SingleJamViewComponent implements OnInit {
     private route: ActivatedRoute,
     private jamService: JamService,
     private siteService: SiteService,
-    private router: Router
+    private router: Router,   
   ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     const jamId: string | null = this.route.snapshot.paramMap.get('id');
     if (jamId) {
       this.jamId = jamId;
@@ -31,9 +31,9 @@ export class SingleJamViewComponent implements OnInit {
           this.jam = data;
           console.log('sites', this.jam.sites);
           console.log('jam', this.jam);
-
-          // Obtener los objetos Site utilizando los IDs de los sitios
+           // Obtener los objetos Site utilizando los IDs de los sitios
           this.getAndSetSites(this.jam.sites);
+          
         },
         (error: any) => {
           console.error('Error al obtener los detalles de la jam:', error);
@@ -60,7 +60,15 @@ export class SingleJamViewComponent implements OnInit {
   }
 
   deleteSite(siteId: string) {
-    console.log('Deleting site', siteId);
-    this.siteService.deleteSite(siteId);
+    this.siteService.deleteSite(siteId).subscribe(
+      () => {
+        console.log('Site deleted successfully.');
+        location.reload();
+      },
+      (error) => {
+        console.log('Error deleting site:', error);
+      }
+    );
   }
 }
+

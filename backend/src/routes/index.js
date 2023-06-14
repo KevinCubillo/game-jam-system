@@ -321,6 +321,8 @@ router.get('/sites/:id', async (req, res) => {
 }
 });
 
+
+
 // Ruta para crear un nuevo Site
 router.post('/sites', async (req, res) => {
   console.log('Entering POST /sites route');
@@ -363,24 +365,40 @@ router.put('/sites/:id', async (req, res) => {
 }
 });
 
-// Ruta para eliminar un Site existente por su ID
 router.delete('/sites/:id', async (req, res) => {
   const id = req.params.id;
-    try {
-      const site = await Jam.findById(id);
-   
-      if (!site) {
-        return res.status(404).json({ message: 'Site not found' });
-      }
-      await Site.findByIdAndDelete(id);
-  
-      res.json({ message: 'Site deleted successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
-    }
-});
+  try {
+    const site = await Site.findById(id);
+    const jamId = site.jamId;
 
+    if (!site) {
+      return res.status(404).json({ message: 'Site not found' });
+    }
+    console.log(jamId);
+    const jam = await Jam.findById(jamId);
+    console.log(jam);
+
+    if (!jam) {
+      return res.status(404).json({ message: 'Jam not found' });
+    }
+
+    const siteIndex = jam.sites.indexOf(id);
+
+    if (siteIndex === -1) {
+      return res.status(404).json({ message: 'Site not found in Jam' });
+    }
+
+    jam.sites.splice(siteIndex, 1);
+    await jam.save();
+
+    await Site.findByIdAndDelete(id);
+
+    res.json({ message: 'Site deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 
 
