@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
               birthdate: user.birthdate ? new Date(user.birthdate).toISOString().split('T')[0] : null,
             };
             this.userForm.patchValue(formattedUser);
-            this.userForm.get('role')?.setValue(user.roles);
+            this.userForm.get('roles')?.setValue(user.roles);
           },
           error => console.error(error)
         );
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
   
   saveProfile(): void {
     const user: User = this.userForm.value;
-    user.roles = user.roles.flat(); 
+    //user.roles = user.roles.flat(); 
     this.authService.updateUser(user)
       .subscribe(
         () => {

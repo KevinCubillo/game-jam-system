@@ -21,6 +21,7 @@ export class AssignMentorTableComponent implements OnInit{
 
   ngOnInit(): void {
     const siteId: string | null = this.actibeRute.snapshot.paramMap.get('id');
+    console.log(siteId);
     this.userService.getAllUsers().subscribe(
       res => {
         this.users = res;
@@ -37,8 +38,8 @@ export class AssignMentorTableComponent implements OnInit{
     this.users = this.users.filter((user: any) => user.nombre === this.searchText || user.email === this.searchText);
   }
 
-  asingRole(id: string,role: string)  {
-    this.userService.updateRole(id, role).subscribe(
+  asingRole(id: string,role: string, siteId: string)  {
+    this.userService.updateRole(id, role, siteId).subscribe(
       res => {
         console.log(res);
       }

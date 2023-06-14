@@ -177,13 +177,17 @@ router.get('/users', async (req, res) => {
 router.put('/users/:userId/role', async (req, res) => {
   userId = req.params.userId;
   role = req.body.role;
-  //siteId = req.body.siteId;
+  siteID = req.body.siteID;
+  console.log(req.body);
+  console.log(siteID);
   const user = await User.findById(userId);
   if (!user) {
       return res.status(404).json({ message: 'User not found' });
   }
   user.role.push(role);
-  //user.sites.push(siteId);
+  console.log(user.role);
+  user.sites.push(siteID);
+  console.log(user.sites);
   await user.save();
   res.json(user);
 });

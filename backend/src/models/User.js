@@ -44,12 +44,13 @@ let userSchema = new Schema({
     birthdate: {
         type: Date,
     },
-    sites: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Site'
-        }
-      ],
+    sites: {
+        type: [
+            {
+                type: String
+            }
+        ]
+    },
     notifications: [notificationSchema]
 }, { timestamps: true });
 

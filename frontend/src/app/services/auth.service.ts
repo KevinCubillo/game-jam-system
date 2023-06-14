@@ -62,9 +62,18 @@ export class AuthService {
     return this.http.get<User[]>(`${this.URL}/users`);
   }
 
-  updateRole(userId: string, role: string): Observable<User> {
-    return this.http.put<User>(`${this.URL}/users/${userId}/role`, { role });
+  updateRole(userId: string, role: string, siteID: string): Observable<User> {
+    console.log("llamando a updateRole");
+    console.log(userId, role, siteID);
+    
+    const requestBody = {
+      role: role,
+      siteID: siteID
+    };
+    
+    return this.http.put<User>(`${this.URL}/users/${userId}/role`, requestBody);
   }
+  
   
 
 }
